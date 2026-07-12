@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>APIScan - Projects</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Manrope:wght@600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "secondary": "#495c95",
+                    "on-primary": "#ffffff",
+                    "surface-container-low": "#eff4ff",
+                    "inverse-on-surface": "#eaf1ff",
+                    "on-secondary-fixed": "#00174b",
+                    "on-tertiary-fixed": "#360f00",
+                    "surface-variant": "#d5e3fc",
+                    "primary-fixed-dim": "#b4c5ff",
+                    "on-surface-variant": "#434655",
+                    "tertiary-fixed-dim": "#ffb596",
+                    "primary-container": "#2563eb",
+                    "on-secondary-fixed-variant": "#31447b",
+                    "on-tertiary-container": "#ffede6",
+                    "surface-dim": "#ccdbf3",
+                    "outline": "#737686",
+                    "on-tertiary-fixed-variant": "#7d2d00",
+                    "surface-bright": "#f8f9ff",
+                    "inverse-primary": "#b4c5ff",
+                    "secondary-fixed-dim": "#b4c5ff",
+                    "error": "#ba1a1a",
+                    "outline-variant": "#c3c6d7",
+                    "surface": "#f8f9ff",
+                    "tertiary": "#943700",
+                    "primary-fixed": "#dbe1ff",
+                    "on-primary-fixed-variant": "#003ea8",
+                    "tertiary-fixed": "#ffdbcd",
+                    "surface-tint": "#0053db",
+                    "on-surface": "#0d1c2e",
+                    "secondary-fixed": "#dbe1ff",
+                    "background": "#f8f9ff",
+                    "surface-container": "#e6eeff",
+                    "on-primary-fixed": "#00174b",
+                    "on-primary-container": "#eeefff",
+                    "on-background": "#0d1c2e",
+                    "on-error": "#ffffff",
+                    "on-tertiary": "#ffffff",
+                    "tertiary-container": "#bc4800",
+                    "surface-container-high": "#dce9ff",
+                    "error-container": "#ffdad6",
+                    "primary": "#004ac6",
+                    "surface-container-lowest": "#ffffff",
+                    "secondary-container": "#acbfff",
+                    "surface-container-highest": "#d5e3fc",
+                    "on-secondary": "#ffffff",
+                    "inverse-surface": "#233144",
+                    "on-secondary-container": "#394c84",
+                    "on-error-container": "#93000a"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "1.0rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "fontFamily": {
+                    "headline": ["Manrope"],
+                    "body": ["Inter"],
+                    "label": ["Inter"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .clinical-gradient {
+            background: linear-gradient(135deg, #004ac6 0%, #2563eb 100%);
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(24px);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background font-body text-on-surface antialiased">
+<!-- Navigation Drawer (SideNav) -->
+<aside class="h-screen w-64 left-0 top-0 fixed bg-[#eff4ff] dark:bg-slate-900 flex flex-col gap-2 p-6 z-50">
+<div class="mb-8 px-2">
+<span class="font-['Manrope'] font-extrabold text-[#0d1c2e] dark:text-white text-2xl tracking-tighter">APIScan</span>
+</div>
+<nav class="flex flex-col gap-2">
+<a class="flex items-center gap-3 px-4 py-3 text-[#434655] dark:text-slate-400 hover:text-[#004ac6] hover:bg-[#dce9ff] dark:hover:bg-slate-800 transition-all font-['Inter'] text-sm font-medium" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+                Dashboard
+            </a>
+<a class="flex items-center gap-3 px-4 py-3 bg-white dark:bg-slate-800 text-[#004ac6] font-bold rounded-lg shadow-sm font-['Inter'] text-sm font-medium" href="#">
+<span class="material-symbols-outlined" data-icon="folder_open">folder_open</span>
+                Projects
+            </a>
+<a class="flex items-center gap-3 px-4 py-3 text-[#434655] dark:text-slate-400 hover:text-[#004ac6] hover:bg-[#dce9ff] dark:hover:bg-slate-800 transition-all font-['Inter'] text-sm font-medium" href="#">
+<span class="material-symbols-outlined" data-icon="radar">radar</span>
+                Scanner
+            </a>
+<a class="flex items-center gap-3 px-4 py-3 text-[#434655] dark:text-slate-400 hover:text-[#004ac6] hover:bg-[#dce9ff] dark:hover:bg-slate-800 transition-all font-['Inter'] text-sm font-medium" href="#">
+<span class="material-symbols-outlined" data-icon="analytics">analytics</span>
+                Reports
+            </a>
+<div class="mt-auto pt-10">
+<a class="flex items-center gap-3 px-4 py-3 text-[#434655] dark:text-slate-400 hover:text-[#004ac6] hover:bg-[#dce9ff] dark:hover:bg-slate-800 transition-all font-['Inter'] text-sm font-medium" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+                    Settings
+                </a>
+</div>
+</nav>
+</aside>
+<!-- Main Content Area -->
+<main class="ml-64 min-h-screen">
+<!-- TopAppBar -->
+<header class="w-full top-0 sticky bg-[#f8f9ff] dark:bg-slate-950 flex justify-between items-center px-8 py-4 z-40">
+<div class="flex items-center gap-4">
+<button class="p-2 text-[#004ac6] dark:text-[#2563eb] hover:bg-[#dce9ff] dark:hover:bg-slate-800 transition-colors rounded-full">
+<span class="material-symbols-outlined" data-icon="search">search</span>
+</button>
+<h1 class="font-['Manrope'] font-bold text-lg tracking-tight text-[#0d1c2e] dark:text-slate-100">Projects Inventory</h1>
+</div>
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-full bg-surface-container-high flex items-center justify-center overflow-hidden ring-2 ring-primary-container ring-offset-2 ring-offset-background">
+<img alt="User profile avatar" data-alt="minimalist 3d avatar of a professional software engineer with glasses and a blue tech hoodie on a soft blue background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBpeBuTD7h0e_ScqzYtlukBUj7inm7ziBAZGW3Yl8F-2QhtLMp90DX6ugrcyZ_L3D6CLHveclrOs87tpD2-GoODtjlAAFFGWMRGQ0i5SFfsxg9_A3SdYSjkrnWi_f9l1xnTRBV0oSIj_WC_rXNFCNw-RqixWvKIsJQ8ea8w6P8HPQJMkTt3GAeI86kbu5-car6LLPowjxoD8qpqYM1c1S-YO2jDYYePTwuIAwHdKT9mqE6RpVtoZ-F7TFVH8VqIgAesvrd1DdbVAgg"/>
+</div>
+</div>
+</header>
+<!-- Page Content -->
+<div class="p-8 max-w-6xl mx-auto">
+<!-- Project Addition Hero -->
+<section class="mb-12">
+<div class="bg-surface-container-low rounded-lg p-8 relative overflow-hidden">
+<div class="relative z-10 max-w-2xl">
+<h2 class="font-headline text-3xl font-extrabold text-on-surface mb-2 tracking-tight">Expand Your Perimeter</h2>
+<p class="text-on-surface-variant mb-6 font-medium">Register a new API endpoint to begin clinical security analysis and threat modeling.</p>
+<div class="flex flex-col md:flex-row gap-3">
+<div class="relative flex-grow">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-outline" data-icon="link">link</span>
+<input class="w-full pl-12 pr-4 py-4 rounded-lg bg-surface-container-lowest border-none ring-1 ring-outline-variant/15 focus:ring-2 focus:ring-primary transition-all text-on-surface placeholder:text-outline/50" placeholder="https://api.your-domain.com/v1" type="text"/>
+</div>
+<button class="clinical-gradient px-8 py-4 rounded-lg text-on-primary font-bold flex items-center justify-center gap-2 hover:opacity-90 transition-all active:scale-95 shadow-lg shadow-primary/20">
+<span class="material-symbols-outlined" data-icon="add">add</span>
+                                Add Project
+                            </button>
+</div>
+</div>
+<!-- Decorative Element -->
+<div class="absolute right-[-10%] top-[-20%] w-96 h-96 clinical-gradient opacity-5 rounded-full blur-3xl"></div>
+</div>
+</section>
+<!-- Active Projects List -->
+<section>
+<div class="flex items-center justify-between mb-6">
+<h3 class="font-headline text-xl font-bold text-on-surface">Protected Endpoints</h3>
+<div class="flex gap-2">
+<button class="p-2 bg-surface-container-lowest text-on-surface-variant rounded hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined" data-icon="filter_list">filter_list</span>
+</button>
+<button class="p-2 bg-surface-container-lowest text-on-surface-variant rounded hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined" data-icon="sort">sort</span>
+</button>
+</div>
+</div>
+<!-- Project Grid/List -->
+<div class="grid gap-4">
+<!-- Project Card 1 -->
+<div class="bg-surface-container-lowest p-6 rounded-lg flex flex-col md:flex-row items-center justify-between group hover:shadow-xl hover:shadow-on-surface/5 transition-all duration-300 border-l-4 border-primary">
+<div class="flex items-center gap-6 w-full md:w-auto">
+<div class="w-12 h-12 rounded-lg bg-surface-container-low flex items-center justify-center text-primary">
+<span class="material-symbols-outlined" data-icon="language">language</span>
+</div>
+<div class="flex flex-col">
+<span class="font-headline font-bold text-on-surface text-lg">https://api.example.com</span>
+<div class="flex gap-4 mt-1">
+<span class="text-xs font-semibold text-on-surface-variant flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]" data-icon="schedule">schedule</span>
+                                        Last scanned: 2h ago
+                                    </span>
+<span class="bg-surface-container-high text-primary text-[10px] font-bold px-2 py-0.5 rounded uppercase tracking-wider">v2.4.0</span>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-6 mt-4 md:mt-0 w-full md:w-auto justify-between md:justify-end">
+<div class="flex flex-col items-end mr-4">
+<span class="text-[10px] font-bold text-outline uppercase tracking-widest">Health Score</span>
+<div class="w-24 h-1.5 bg-outline-variant/20 rounded-full mt-1 overflow-hidden">
+<div class="h-full bg-primary w-[92%]"></div>
+</div>
+</div>
+<button class="flex items-center gap-2 bg-surface-container-highest text-on-primary-fixed-variant px-5 py-2.5 rounded-lg font-bold hover:bg-primary hover:text-white transition-all">
+<span class="material-symbols-outlined text-[18px]" data-icon="play_arrow" data-weight="fill">play_arrow</span>
+                                Scan
+                            </button>
+<button class="p-2 text-outline-variant hover:text-on-surface transition-colors">
+<span class="material-symbols-outlined" data-icon="more_vert">more_vert</span>
+</button>
+</div>
+</div>
+<!-- Project Card 2 -->
+<div class="bg-surface-container-lowest p-6 rounded-lg flex flex-col md:flex-row items-center justify-between group hover:shadow-xl hover:shadow-on-surface/5 transition-all duration-300 border-l-4 border-tertiary">
+<div class="flex items-center gap-6 w-full md:w-auto">
+<div class="w-12 h-12 rounded-lg bg-surface-container-low flex items-center justify-center text-tertiary">
+<span class="material-symbols-outlined" data-icon="cloud_queue">cloud_queue</span>
+</div>
+<div class="flex flex-col">
+<span class="font-headline font-bold text-on-surface text-lg">https://v1.service.org</span>
+<div class="flex gap-4 mt-1">
+<span class="text-xs font-semibold text-on-surface-variant flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]" data-icon="warning">warning</span>
+                                        Last scanned: 3 days ago
+                                    </span>
+<span class="bg-tertiary-fixed text-tertiary text-[10px] font-bold px-2 py-0.5 rounded uppercase tracking-wider">Legacy</span>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-6 mt-4 md:mt-0 w-full md:w-auto justify-between md:justify-end">
+<div class="flex flex-col items-end mr-4">
+<span class="text-[10px] font-bold text-outline uppercase tracking-widest">Health Score</span>
+<div class="w-24 h-1.5 bg-outline-variant/20 rounded-full mt-1 overflow-hidden">
+<div class="h-full bg-tertiary w-[45%]"></div>
+</div>
+</div>
+<button class="flex items-center gap-2 bg-surface-container-highest text-on-primary-fixed-variant px-5 py-2.5 rounded-lg font-bold hover:bg-primary hover:text-white transition-all">
+<span class="material-symbols-outlined text-[18px]" data-icon="play_arrow" data-weight="fill">play_arrow</span>
+                                Scan
+                            </button>
+<button class="p-2 text-outline-variant hover:text-on-surface transition-colors">
+<span class="material-symbols-outlined" data-icon="more_vert">more_vert</span>
+</button>
+</div>
+</div>
+<!-- Project Card 3 (New Project State) -->
+<div class="bg-surface-container-lowest p-6 rounded-lg flex flex-col md:flex-row items-center justify-between group hover:shadow-xl hover:shadow-on-surface/5 transition-all duration-300 border-l-4 border-outline-variant">
+<div class="flex items-center gap-6 w-full md:w-auto">
+<div class="w-12 h-12 rounded-lg bg-surface-container-low flex items-center justify-center text-outline">
+<span class="material-symbols-outlined" data-icon="dns">dns</span>
+</div>
+<div class="flex flex-col">
+<span class="font-headline font-bold text-on-surface text-lg">https://internal.dev.local/auth</span>
+<div class="flex gap-4 mt-1">
+<span class="text-xs font-semibold text-on-surface-variant flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]" data-icon="sync">sync</span>
+                                        Pending Initial Scan
+                                    </span>
+<span class="bg-surface-container-high text-on-surface-variant text-[10px] font-bold px-2 py-0.5 rounded uppercase tracking-wider">Development</span>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-6 mt-4 md:mt-0 w-full md:w-auto justify-between md:justify-end">
+<div class="flex flex-col items-end mr-4 opacity-50">
+<span class="text-[10px] font-bold text-outline uppercase tracking-widest">Health Score</span>
+<div class="w-24 h-1.5 bg-outline-variant/20 rounded-full mt-1 overflow-hidden">
+<div class="h-full bg-outline-variant w-0"></div>
+</div>
+</div>
+<button class="flex items-center gap-2 clinical-gradient text-on-primary px-5 py-2.5 rounded-lg font-bold hover:opacity-90 transition-all shadow-md shadow-primary/10">
+<span class="material-symbols-outlined text-[18px]" data-icon="play_arrow" data-weight="fill">play_arrow</span>
+                                Run First Scan
+                            </button>
+<button class="p-2 text-outline-variant hover:text-on-surface transition-colors">
+<span class="material-symbols-outlined" data-icon="more_vert">more_vert</span>
+</button>
+</div>
+</div>
+</div>
+</section>
+<!-- Bottom Insight Card (Asymmetric Layout) -->
+<section class="mt-12 grid grid-cols-1 md:grid-cols-3 gap-6">
+<div class="md:col-span-2 glass-card rounded-lg p-8 border border-white flex flex-col justify-between">
+<div>
+<div class="flex items-center gap-2 text-primary mb-4">
+<span class="material-symbols-outlined" data-icon="auto_awesome">auto_awesome</span>
+<span class="font-bold text-xs uppercase tracking-widest">Automated Insight</span>
+</div>
+<h4 class="font-headline text-2xl font-bold text-on-surface mb-4">Security Coverage is at 78%</h4>
+<p class="text-on-surface-variant leading-relaxed max-w-lg">We detected 2 additional subdomains that aren't being tracked. Adding them to your projects would increase your vulnerability coverage by 22%.</p>
+</div>
+<button class="mt-8 text-primary font-bold flex items-center gap-2 group">
+                        Review suggested endpoints
+                        <span class="material-symbols-outlined text-[18px] group-hover:translate-x-1 transition-transform" data-icon="arrow_forward">arrow_forward</span>
+</button>
+</div>
+<div class="bg-inverse-surface text-inverse-on-surface rounded-lg p-8 flex flex-col items-center justify-center text-center">
+<span class="material-symbols-outlined text-4xl mb-4 text-primary-fixed-dim" data-icon="verified_user">verified_user</span>
+<span class="font-headline text-3xl font-extrabold mb-1">12</span>
+<span class="text-sm opacity-70 mb-6 font-medium">Verified Clean APIs</span>
+<div class="w-full bg-white/10 h-1 rounded-full overflow-hidden">
+<div class="h-full bg-primary-fixed-dim w-full"></div>
+</div>
+</div>
+</section>
+</div>
+</main>
+<!-- Contextual FAB (Only for Adding Projects) -->
+<button class="fixed bottom-8 right-8 w-14 h-14 rounded-full clinical-gradient text-white flex items-center justify-center shadow-2xl hover:scale-110 transition-transform md:hidden z-50">
+<span class="material-symbols-outlined" data-icon="add">add</span>
+</button>
+</body></html>

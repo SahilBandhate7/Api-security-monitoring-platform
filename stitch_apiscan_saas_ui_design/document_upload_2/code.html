@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>ClinicalAI Contracts - Document Processing</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-variant": "#d5e3fc",
+                    "primary-fixed": "#dbe1ff",
+                    "outline": "#737686",
+                    "outline-variant": "#c3c6d7",
+                    "on-secondary-container": "#394c84",
+                    "secondary-fixed": "#dbe1ff",
+                    "on-tertiary-fixed-variant": "#7d2d00",
+                    "on-error-container": "#93000a",
+                    "surface-bright": "#f8f9ff",
+                    "tertiary": "#943700",
+                    "on-tertiary": "#ffffff",
+                    "on-primary": "#ffffff",
+                    "error-container": "#ffdad6",
+                    "on-secondary-fixed-variant": "#31447b",
+                    "surface-dim": "#ccdbf3",
+                    "on-primary-fixed-variant": "#003ea8",
+                    "background": "#f8f9ff",
+                    "surface-tint": "#0053db",
+                    "inverse-primary": "#b4c5ff",
+                    "surface-container-high": "#dce9ff",
+                    "on-secondary": "#ffffff",
+                    "on-error": "#ffffff",
+                    "inverse-surface": "#233144",
+                    "secondary-fixed-dim": "#b4c5ff",
+                    "tertiary-container": "#bc4800",
+                    "secondary": "#495c95",
+                    "on-tertiary-container": "#ffede6",
+                    "secondary-container": "#acbfff",
+                    "primary": "#004ac6",
+                    "error": "#ba1a1a",
+                    "on-primary-fixed": "#00174b",
+                    "on-secondary-fixed": "#00174b",
+                    "primary-fixed-dim": "#b4c5ff",
+                    "surface-container-low": "#eff4ff",
+                    "on-tertiary-fixed": "#360f00",
+                    "on-surface-variant": "#434655",
+                    "tertiary-fixed": "#ffdbcd",
+                    "surface-container-lowest": "#ffffff",
+                    "surface": "#f8f9ff",
+                    "on-surface": "#0d1c2e",
+                    "primary-container": "#2563eb",
+                    "inverse-on-surface": "#eaf1ff",
+                    "tertiary-fixed-dim": "#ffb596",
+                    "surface-container": "#e6eeff",
+                    "on-primary-container": "#eeefff",
+                    "surface-container-highest": "#d5e3fc",
+                    "on-background": "#0d1c2e"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "1rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "fontFamily": {
+                    "headline": ["Manrope"],
+                    "body": ["Inter"],
+                    "label": ["Inter"]
+            }
+          },
+        }
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .security-pulse {
+            position: relative;
+            overflow: hidden;
+        }
+        .security-pulse::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(37, 99, 235, 0.2), transparent);
+        }
+        body { font-family: 'Inter', sans-serif; }
+        h1, h2, h3, .headline { font-family: 'Manrope', sans-serif; }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background min-h-screen pb-24 md:pb-0">
+<!-- TopAppBar -->
+<header class="w-full top-0 sticky z-40 bg-[#f8f9ff] dark:bg-slate-950 flex justify-between items-center px-6 py-4 w-full">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-full bg-surface-container overflow-hidden">
+<img alt="user profile picture" class="w-full h-full object-cover" data-alt="close-up portrait of a professional healthcare executive in a bright modern office with soft natural lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCXNUvnFfKxCGZtFTFpPKl9Sj_B7flxSUNFUzj26y-nx1M6eYWudq7eh_3egt-ic_J8VAQzVrwkDNrXCHABTnyBimQP4w-CAm7odMLhgVrXVsCY6UXltKk7B3t7s4FqwcKBJ3u2NV9Oe8l52VfT6MrM-4sIPbFHg3CyfFO3HN0MQgJQtLxd9G1bpCnbLBkRTQbT4D8eBHGJg6vLaEkMHMtgOCwlGlZVSeqU9dwn_1L5T6gNbLeQ5tOnLJW4fKtgcIgp8U72jxvXLqM"/>
+</div>
+<span class="font-manrope font-black text-[#0d1c2e] dark:text-slate-100 text-lg tracking-tight">ClinicalAI Contracts</span>
+</div>
+<div class="flex items-center gap-6">
+<nav class="hidden md:flex gap-8">
+<a class="text-[#434655] dark:text-slate-400 font-medium hover:text-[#004ac6] transition-colors" href="#">Dashboard</a>
+<a class="text-[#004ac6] dark:text-[#2563eb] font-bold" href="#">Upload</a>
+<a class="text-[#434655] dark:text-slate-400 font-medium hover:text-[#004ac6] transition-colors" href="#">Reports</a>
+<a class="text-[#434655] dark:text-slate-400 font-medium hover:text-[#004ac6] transition-colors" href="#">Settings</a>
+</nav>
+<button class="material-symbols-outlined text-[#434655] hover:bg-[#dce9ff] p-2 rounded-full transition-colors active:scale-95 duration-200" data-icon="notifications">notifications</button>
+</div>
+</header>
+<main class="max-w-5xl mx-auto px-6 pt-10 pb-20">
+<!-- Hero Title Section -->
+<div class="mb-12">
+<h1 class="text-4xl font-extrabold text-on-surface tracking-tight mb-3">Ingest Clinical Data</h1>
+<p class="text-on-surface-variant text-lg max-w-2xl">Upload API documentation, medical service agreements, or clinical protocol PDFs for automated AI analysis and risk scoring.</p>
+</div>
+<!-- Upload Bento Section -->
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-12">
+<!-- Primary Upload Area -->
+<div class="lg:col-span-2 bg-surface-container-lowest rounded-lg p-10 flex flex-col items-center justify-center border-2 border-dashed border-outline-variant/30 hover:border-primary/40 transition-all group cursor-pointer">
+<div class="w-20 h-20 bg-surface-container-low rounded-full flex items-center justify-center mb-6 group-hover:bg-primary-container group-hover:text-white transition-colors duration-300">
+<span class="material-symbols-outlined text-4xl" data-icon="cloud_upload">cloud_upload</span>
+</div>
+<h3 class="text-2xl font-bold text-on-surface mb-2">Drag &amp; Drop Documents</h3>
+<p class="text-on-surface-variant mb-8 text-center">Support for PDF, DOCX, and JSON API Schemas (up to 50MB)</p>
+<button class="bg-gradient-to-br from-primary to-primary-container text-white px-8 py-3 rounded-DEFAULT font-semibold text-sm tracking-wide active:scale-95 transition-transform">
+                    Select File from Device
+                </button>
+</div>
+<!-- Analysis Status Quick View -->
+<div class="bg-surface-container-low rounded-lg p-8 flex flex-col justify-between">
+<div>
+<span class="text-xs font-bold uppercase tracking-widest text-primary mb-4 block">Current Session</span>
+<div class="space-y-6">
+<div class="flex items-center gap-4">
+<div class="w-2 h-2 rounded-full bg-primary animate-pulse"></div>
+<span class="font-medium text-on-surface">Queue active</span>
+</div>
+<div class="p-4 bg-surface-container-lowest rounded-lg">
+<div class="flex justify-between items-end mb-2">
+<span class="text-xs font-bold text-on-surface-variant uppercase">System Load</span>
+<span class="text-sm font-bold text-primary">Optimal</span>
+</div>
+<div class="h-1 w-full bg-outline-variant/20 rounded-full overflow-hidden">
+<div class="h-full bg-primary w-1/3"></div>
+</div>
+</div>
+</div>
+</div>
+<div class="mt-8">
+<div class="aspect-video rounded-lg overflow-hidden relative">
+<img alt="Data abstract" class="w-full h-full object-cover" data-alt="abstract geometric 3D mesh representing network data nodes in shades of clinical blue and white with depth of field" src="https://lh3.googleusercontent.com/aida-public/AB6AXuApE9irYjG-scYtSU9SnnKTRpmOTKtKfMaAx0MDT0QVY9OiXnl0FEwgZkNUClLgszNXHkPdYsnWv3qMI6yQZSUe1B6CRMRFFAx7T7vFqBcIsxOp85Is1yd-XHM28VArz0ZUmJLuaknJ-R-ePn2RMk2-c6mlC4ojGb36ydZOldb1VfapCYnLFOXfVN9w75STNfUpWRXpcg7HXJ2XVjabQ4NXyrAaHnCR_z4-oiTmf971VqSVBa_dFtWLkzuP4ph4S0tNm1i7u8MbDU0"/>
+<div class="absolute inset-0 bg-primary/10 backdrop-blur-[2px]"></div>
+</div>
+</div>
+</div>
+</div>
+<!-- Recent Uploads Section -->
+<section>
+<div class="flex items-center justify-between mb-6">
+<h2 class="text-xl font-bold text-on-surface">Recent Document Processing</h2>
+<button class="text-primary font-semibold text-sm hover:underline">View All Records</button>
+</div>
+<!-- Table Header (Floating approach) -->
+<div class="grid grid-cols-12 px-6 py-3 text-xs font-bold text-on-surface-variant uppercase tracking-widest bg-surface-container-low rounded-t-lg">
+<div class="col-span-5">Document Name</div>
+<div class="col-span-2">Date</div>
+<div class="col-span-3">Status</div>
+<div class="col-span-2 text-right">Actions</div>
+</div>
+<!-- Upload List -->
+<div class="space-y-3 mt-3">
+<!-- Processing Item -->
+<div class="grid grid-cols-12 items-center px-6 py-5 bg-surface-container-lowest rounded-lg group hover:bg-surface-container-high transition-colors">
+<div class="col-span-5 flex items-center gap-4">
+<div class="w-10 h-10 bg-primary-fixed rounded flex items-center justify-center text-primary">
+<span class="material-symbols-outlined" data-icon="description">description</span>
+</div>
+<div>
+<p class="font-bold text-on-surface">MSA_Clinical_Services_v4.pdf</p>
+<p class="text-xs text-on-surface-variant">12.4 MB • PDF Document</p>
+</div>
+</div>
+<div class="col-span-2 text-sm text-on-surface-variant">Oct 24, 2023</div>
+<div class="col-span-3">
+<div class="flex flex-col gap-2">
+<div class="flex items-center gap-2">
+<span class="text-xs font-bold text-primary uppercase">Analyzing API architecture...</span>
+</div>
+<div class="h-1.5 w-full bg-outline-variant/20 rounded-full security-pulse">
+<div class="h-full bg-primary w-2/3 rounded-full relative overflow-hidden">
+<div class="absolute inset-0 bg-white/30 animate-[shimmer_2s_infinite]"></div>
+</div>
+</div>
+</div>
+</div>
+<div class="col-span-2 flex justify-end">
+<button class="material-symbols-outlined text-outline hover:text-on-surface" data-icon="more_vert">more_vert</button>
+</div>
+</div>
+<!-- Analyzed Item -->
+<div class="grid grid-cols-12 items-center px-6 py-5 bg-surface-container-lowest rounded-lg group hover:bg-surface-container-high transition-colors">
+<div class="col-span-5 flex items-center gap-4">
+<div class="w-10 h-10 bg-surface-container rounded flex items-center justify-center text-on-surface-variant">
+<span class="material-symbols-outlined" data-icon="article">article</span>
+</div>
+<div>
+<p class="font-bold text-on-surface">Data_Schema_Validation_Final.docx</p>
+<p class="text-xs text-on-surface-variant">2.1 MB • Word Doc</p>
+</div>
+</div>
+<div class="col-span-2 text-sm text-on-surface-variant">Oct 23, 2023</div>
+<div class="col-span-3">
+<span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-bold bg-surface-container-high text-primary">
+<span class="material-symbols-outlined text-[14px] mr-1" data-icon="check_circle">check_circle</span>
+                            Analyzed
+                        </span>
+</div>
+<div class="col-span-2 flex justify-end gap-3">
+<button class="text-primary text-sm font-bold">View Insights</button>
+<button class="material-symbols-outlined text-outline hover:text-on-surface" data-icon="more_vert">more_vert</button>
+</div>
+</div>
+<!-- Error Item -->
+<div class="grid grid-cols-12 items-center px-6 py-5 bg-surface-container-lowest rounded-lg group hover:bg-surface-container-high transition-colors">
+<div class="col-span-5 flex items-center gap-4">
+<div class="w-10 h-10 bg-error-container/20 rounded flex items-center justify-center text-error">
+<span class="material-symbols-outlined" data-icon="report">report</span>
+</div>
+<div>
+<p class="font-bold text-on-surface">Clinical_Trial_Protocol_Draft.pdf</p>
+<p class="text-xs text-on-surface-variant">45.8 MB • PDF Document</p>
+</div>
+</div>
+<div class="col-span-2 text-sm text-on-surface-variant">Oct 22, 2023</div>
+<div class="col-span-3">
+<span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-bold bg-error-container text-on-error-container">
+<span class="material-symbols-outlined text-[14px] mr-1" data-icon="error">error</span>
+                            Upload Failed
+                        </span>
+</div>
+<div class="col-span-2 flex justify-end gap-3">
+<button class="text-error text-sm font-bold">Retry</button>
+<button class="material-symbols-outlined text-outline hover:text-on-surface" data-icon="more_vert">more_vert</button>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- BottomNavBar (Mobile Only) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full flex justify-around items-center px-4 pb-6 pt-3 bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl z-50 rounded-t-2xl shadow-[0px_-12px_32px_rgba(13,28,46,0.06)]">
+<a class="flex flex-col items-center justify-center text-[#434655] dark:text-slate-400 px-4 py-2 hover:text-[#004ac6] active:scale-90 transition-transform" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="font-inter font-medium text-[10px] tracking-wide uppercase mt-1">Dashboard</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-gradient-to-br from-[#004ac6] to-[#2563eb] text-white rounded-xl px-4 py-2 active:scale-90 transition-transform" href="#">
+<span class="material-symbols-outlined" data-icon="cloud_upload" style="font-variation-settings: 'FILL' 1;">cloud_upload</span>
+<span class="font-inter font-medium text-[10px] tracking-wide uppercase mt-1">Upload</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#434655] dark:text-slate-400 px-4 py-2 hover:text-[#004ac6] active:scale-90 transition-transform" href="#">
+<span class="material-symbols-outlined" data-icon="description">description</span>
+<span class="font-inter font-medium text-[10px] tracking-wide uppercase mt-1">Reports</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#434655] dark:text-slate-400 px-4 py-2 hover:text-[#004ac6] active:scale-90 transition-transform" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span class="font-inter font-medium text-[10px] tracking-wide uppercase mt-1">Settings</span>
+</a>
+</nav>
+</body></html>

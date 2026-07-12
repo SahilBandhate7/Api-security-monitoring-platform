@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>ClinicalAI Contracts - Risk Diagnosis</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800;900&amp;family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-variant": "#d5e3fc",
+                        "primary-fixed": "#dbe1ff",
+                        "outline": "#737686",
+                        "outline-variant": "#c3c6d7",
+                        "on-secondary-container": "#394c84",
+                        "secondary-fixed": "#dbe1ff",
+                        "on-tertiary-fixed-variant": "#7d2d00",
+                        "on-error-container": "#93000a",
+                        "surface-bright": "#f8f9ff",
+                        "tertiary": "#943700",
+                        "on-tertiary": "#ffffff",
+                        "on-primary": "#ffffff",
+                        "error-container": "#ffdad6",
+                        "on-secondary-fixed-variant": "#31447b",
+                        "surface-dim": "#ccdbf3",
+                        "on-primary-fixed-variant": "#003ea8",
+                        "background": "#f8f9ff",
+                        "surface-tint": "#0053db",
+                        "inverse-primary": "#b4c5ff",
+                        "surface-container-high": "#dce9ff",
+                        "on-secondary": "#ffffff",
+                        "on-error": "#ffffff",
+                        "inverse-surface": "#233144",
+                        "secondary-fixed-dim": "#b4c5ff",
+                        "tertiary-container": "#bc4800",
+                        "secondary": "#495c95",
+                        "on-tertiary-container": "#ffede6",
+                        "secondary-container": "#acbfff",
+                        "primary": "#004ac6",
+                        "error": "#ba1a1a",
+                        "on-primary-fixed": "#00174b",
+                        "on-secondary-fixed": "#00174b",
+                        "primary-fixed-dim": "#b4c5ff",
+                        "surface-container-low": "#eff4ff",
+                        "on-tertiary-fixed": "#360f00",
+                        "on-surface-variant": "#434655",
+                        "tertiary-fixed": "#ffdbcd",
+                        "surface-container-lowest": "#ffffff",
+                        "surface": "#f8f9ff",
+                        "on-surface": "#0d1c2e",
+                        "primary-container": "#2563eb",
+                        "inverse-on-surface": "#eaf1ff",
+                        "tertiary-fixed-dim": "#ffb596",
+                        "surface-container": "#e6eeff",
+                        "on-primary-container": "#eeefff",
+                        "surface-container-highest": "#d5e3fc",
+                        "on-background": "#0d1c2e"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "fontFamily": {
+                        "headline": ["Manrope"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .risk-gradient-high {
+            background: linear-gradient(135deg, #ba1a1a 0%, #93000a 100%);
+        }
+        .security-pulse {
+            position: relative;
+        }
+        .security-pulse::after {
+            content: '';
+            position: absolute;
+            inset: -4px;
+            border-radius: inherit;
+            border: 2px solid #004ac6;
+            opacity: 0.2;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background font-body text-on-background min-h-screen">
+<!-- TopAppBar -->
+<header class="w-full top-0 sticky z-50 bg-[#f8f9ff] dark:bg-slate-950">
+<div class="flex justify-between items-center px-6 py-4 w-full bg-[#eff4ff] dark:bg-slate-900 border-none shadow-none">
+<div class="flex items-center gap-3">
+<img alt="User Profile" class="w-10 h-10 rounded-full border-2 border-primary-fixed object-cover" data-alt="Professional headshot of a medical data scientist in a bright modern office with soft bokeh background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCiIaqekrMntfIL1Ie0y0htTUwk0PkBOunotCagIfB7eV-b98hedo7e4Va3kwIFWAToKXajzgDhwLcrNsoJHgX1NmSKxLADUeiO3qVzg0MOHEvwZXPvCROY_hNYFl91LADizgrkpIu3W9bMm3YvuXjwtrp10YeO_9maJgrt2ZB-i3UCnwmDBYyMyhtfxrKsvlz8KlOhvpc9EU9RrFLdSYOMFQR4ldo_hReV6uDbkjvn5OEEjPAEKDayRnisjde2v7EcLYJYLFz0uT4"/>
+<div class="flex flex-col">
+<span class="font-manrope font-black text-[#0d1c2e] dark:text-slate-100 text-lg leading-tight">ClinicalAI Contracts</span>
+<span class="text-[10px] uppercase tracking-widest text-on-surface-variant font-bold">Risk Diagnosis Engine v2.4</span>
+</div>
+</div>
+<div class="hidden md:flex items-center gap-8">
+<nav class="flex gap-6">
+<a class="text-[#434655] dark:text-slate-400 font-manrope font-bold text-sm hover:bg-[#dce9ff] dark:hover:bg-slate-800 transition-colors px-3 py-1 rounded-lg" href="#">Dashboard</a>
+<a class="text-[#434655] dark:text-slate-400 font-manrope font-bold text-sm hover:bg-[#dce9ff] dark:hover:bg-slate-800 transition-colors px-3 py-1 rounded-lg" href="#">Upload</a>
+<a class="text-[#004ac6] dark:text-[#2563eb] font-manrope font-bold text-sm bg-[#dce9ff]/50 px-3 py-1 rounded-lg" href="#">Reports</a>
+<a class="text-[#434655] dark:text-slate-400 font-manrope font-bold text-sm hover:bg-[#dce9ff] dark:hover:bg-slate-800 transition-colors px-3 py-1 rounded-lg" href="#">Settings</a>
+</nav>
+</div>
+<div class="flex items-center gap-4">
+<button class="material-symbols-outlined text-[#004ac6] dark:text-[#2563eb] p-2 rounded-full hover:bg-[#dce9ff] transition-all active:scale-95">notifications</button>
+<div class="h-8 w-[1px] bg-outline-variant/30 hidden md:block"></div>
+<button class="bg-gradient-to-br from-[#004ac6] to-[#2563eb] text-white px-5 py-2 rounded-lg text-sm font-bold shadow-sm hidden md:block active:scale-95 transition-transform">
+                    New Analysis
+                </button>
+</div>
+</div>
+</header>
+<main class="max-w-7xl mx-auto px-6 py-8 pb-32">
+<!-- Report Header Section -->
+<section class="mb-12 flex flex-col md:flex-row md:items-end justify-between gap-6">
+<div class="space-y-2">
+<div class="flex items-center gap-2 text-primary font-bold text-sm uppercase tracking-tighter">
+<span class="material-symbols-outlined text-sm">description</span>
+<span>Document Diagnosis</span>
+</div>
+<h1 class="font-headline font-extrabold text-4xl lg:text-5xl text-on-surface tracking-tight">MSA_GlobalHealth_2024.pdf</h1>
+<p class="text-on-surface-variant max-w-2xl font-medium">Detailed risk perimeter scan for Master Service Agreement regarding clinical data processing and liability frameworks.</p>
+</div>
+<!-- Risk Score Gauge (Clinical Precision) -->
+<div class="bg-surface-container-lowest p-6 rounded-xl flex items-center gap-6 border-none shadow-[0px_12px_32px_rgba(13,28,46,0.04)]">
+<div class="relative w-24 h-24">
+<svg class="w-full h-full -rotate-90" viewbox="0 0 36 36">
+<circle class="stroke-outline-variant/20" cx="18" cy="18" fill="none" r="16" stroke-width="3"></circle>
+<circle class="stroke-error" cx="18" cy="18" fill="none" r="16" stroke-dasharray="72, 100" stroke-linecap="round" stroke-width="3"></circle>
+</svg>
+<div class="absolute inset-0 flex flex-col items-center justify-center">
+<span class="font-manrope font-black text-2xl text-error">72</span>
+<span class="text-[8px] uppercase font-bold text-on-surface-variant">Risk Index</span>
+</div>
+</div>
+<div class="flex flex-col">
+<span class="text-error font-bold text-lg leading-tight">High Risk Detected</span>
+<span class="text-on-surface-variant text-xs">14 Critical points found</span>
+<div class="flex gap-1 mt-2">
+<div class="w-8 h-1.5 rounded-full bg-error"></div>
+<div class="w-8 h-1.5 rounded-full bg-error"></div>
+<div class="w-8 h-1.5 rounded-full bg-outline-variant/30"></div>
+</div>
+</div>
+</div>
+</section>
+<!-- Risk List Section (Asymmetric Grid) -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+<!-- Main Risk Column -->
+<div class="lg:col-span-8 space-y-6">
+<!-- Risk Card: High -->
+<div class="group bg-surface-container-lowest rounded-xl overflow-hidden shadow-[0px_12px_32px_rgba(13,28,46,0.06)] transition-all hover:translate-y-[-2px]">
+<div class="flex h-full">
+<div class="w-2 bg-error"></div>
+<div class="p-8 w-full">
+<div class="flex justify-between items-start mb-4">
+<div class="space-y-1">
+<div class="flex items-center gap-2">
+<span class="bg-error-container text-on-error-container px-2 py-0.5 rounded text-[10px] font-bold uppercase tracking-wider">Critical Risk</span>
+<span class="text-on-surface-variant text-xs font-mono">ID: CR-0842</span>
+</div>
+<h3 class="font-headline font-extrabold text-xl text-on-surface">Unlimited Indemnification Clause</h3>
+</div>
+<div class="text-right">
+<span class="text-[10px] uppercase font-bold text-on-surface-variant block">Reference</span>
+<span class="font-manrope font-bold text-primary">Section 14.2 (b)</span>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8 mt-6">
+<div class="space-y-3">
+<h4 class="text-xs uppercase font-bold text-on-surface-variant flex items-center gap-2">
+<span class="material-symbols-outlined text-sm">psychology</span> AI Diagnosis
+                                    </h4>
+<p class="text-sm leading-relaxed text-on-surface/80">
+                                        The current phrasing allows for uncapped liability in the event of secondary data breaches, bypassing standard professional insurance limits ($5M) and exposing the company to catastrophic financial loss.
+                                    </p>
+</div>
+<div class="bg-surface-container-low p-5 rounded-lg border-none">
+<h4 class="text-xs uppercase font-bold text-on-primary-fixed-variant flex items-center gap-2 mb-3">
+<span class="material-symbols-outlined text-sm">verified</span> Recommendation
+                                    </h4>
+<p class="text-sm leading-relaxed text-on-secondary-container">
+                                        Introduce a "Liability Ceiling" linked to 2x the annual contract value or a fixed $2.5M cap, whichever is lower. Use standard carve-outs for gross negligence.
+                                    </p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Risk Card: Medium -->
+<div class="group bg-surface-container-lowest rounded-xl overflow-hidden shadow-[0px_12px_32px_rgba(13,28,46,0.04)] transition-all hover:translate-y-[-2px]">
+<div class="flex h-full">
+<div class="w-2 bg-tertiary"></div>
+<div class="p-8 w-full">
+<div class="flex justify-between items-start mb-4">
+<div class="space-y-1">
+<div class="flex items-center gap-2">
+<span class="bg-tertiary-fixed text-tertiary px-2 py-0.5 rounded text-[10px] font-bold uppercase tracking-wider">Moderate Risk</span>
+<span class="text-on-surface-variant text-xs font-mono">ID: MD-1109</span>
+</div>
+<h3 class="font-headline font-extrabold text-xl text-on-surface">Ambiguous Data Sovereignty</h3>
+</div>
+<div class="text-right">
+<span class="text-[10px] uppercase font-bold text-on-surface-variant block">Reference</span>
+<span class="font-manrope font-bold text-primary">Annex III, Para 4</span>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8 mt-6">
+<div class="space-y-3">
+<h4 class="text-xs uppercase font-bold text-on-surface-variant flex items-center gap-2">
+<span class="material-symbols-outlined text-sm">psychology</span> AI Diagnosis
+                                    </h4>
+<p class="text-sm leading-relaxed text-on-surface/80">
+                                        The clause regarding server location is loosely defined as "Global Tiers." This could lead to non-compliance with GDPR 'Schrems II' requirements if clinical data is processed in restricted jurisdictions.
+                                    </p>
+</div>
+<div class="bg-surface-container-low p-5 rounded-lg border-none">
+<h4 class="text-xs uppercase font-bold text-on-primary-fixed-variant flex items-center gap-2 mb-3">
+<span class="material-symbols-outlined text-sm">verified</span> Recommendation
+                                    </h4>
+<p class="text-sm leading-relaxed text-on-secondary-container">
+                                        Explicitly list EU-based or HIPAA-compliant data centers. Require 30-day notice prior to any change in processing location.
+                                    </p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Risk Card: Low -->
+<div class="group bg-surface-container-lowest rounded-xl overflow-hidden shadow-[0px_12px_32px_rgba(13,28,46,0.04)] transition-all hover:translate-y-[-2px]">
+<div class="flex h-full">
+<div class="w-2 bg-primary"></div>
+<div class="p-8 w-full">
+<div class="flex justify-between items-start mb-4">
+<div class="space-y-1">
+<div class="flex items-center gap-2">
+<span class="bg-surface-container-high text-primary px-2 py-0.5 rounded text-[10px] font-bold uppercase tracking-wider">Low Risk</span>
+<span class="text-on-surface-variant text-xs font-mono">ID: LW-4421</span>
+</div>
+<h3 class="font-headline font-extrabold text-xl text-on-surface">Notice Period Discrepancy</h3>
+</div>
+<div class="text-right">
+<span class="text-[10px] uppercase font-bold text-on-surface-variant block">Reference</span>
+<span class="font-manrope font-bold text-primary">Section 5.1</span>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8 mt-6">
+<div class="space-y-3">
+<h4 class="text-xs uppercase font-bold text-on-surface-variant flex items-center gap-2">
+<span class="material-symbols-outlined text-sm">psychology</span> AI Diagnosis
+                                    </h4>
+<p class="text-sm leading-relaxed text-on-surface/80">
+                                        Termination notice is set to 45 days, while operational hand-off requires 90 days. This creates a 45-day support gap during transition.
+                                    </p>
+</div>
+<div class="bg-surface-container-low p-5 rounded-lg border-none">
+<h4 class="text-xs uppercase font-bold text-on-primary-fixed-variant flex items-center gap-2 mb-3">
+<span class="material-symbols-outlined text-sm">verified</span> Recommendation
+                                    </h4>
+<p class="text-sm leading-relaxed text-on-secondary-container">
+                                        Align termination notice to 90 days or specify that support persists 45 days post-termination at existing rates.
+                                    </p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Sidebar Context -->
+<aside class="lg:col-span-4 space-y-8">
+<!-- Document Snapshot -->
+<div class="bg-surface-container-low rounded-xl p-6 border-none">
+<h3 class="font-manrope font-extrabold text-on-surface mb-4">Contract Metadata</h3>
+<div class="space-y-4">
+<div class="flex justify-between items-center py-2 border-b border-outline-variant/15">
+<span class="text-xs font-bold text-on-surface-variant uppercase tracking-tighter">Parties</span>
+<span class="text-xs font-bold text-on-surface">GlobalHealth vs ClinicalAI</span>
+</div>
+<div class="flex justify-between items-center py-2 border-b border-outline-variant/15">
+<span class="text-xs font-bold text-on-surface-variant uppercase tracking-tighter">Value</span>
+<span class="text-xs font-bold text-on-surface">$1,450,000 /yr</span>
+</div>
+<div class="flex justify-between items-center py-2 border-b border-outline-variant/15">
+<span class="text-xs font-bold text-on-surface-variant uppercase tracking-tighter">Renewal</span>
+<span class="text-xs font-bold text-on-surface">Automatic (12m)</span>
+</div>
+</div>
+<div class="mt-6">
+<img alt="Legal document stack" class="w-full h-32 object-cover rounded-lg grayscale opacity-50 contrast-125" data-alt="Monochrome close-up of organized legal documents with clinical blue lighting and shallow depth of field" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDdcBjIf9iqYTpfBR3_fQoF_4WJFdKW9jzqArC7u-UlpVwQz_4aypM4BWGoUowCZ25sk6QffAToZLMMzZOcf8qlV-cXRLq-fTCIxi1iL_z65gZfYs-9_vaH2tsPhFgG_wfjKijf5GEJHICTohqQSb73D6v3LyU8bokCsHYn9TiFkaJXUIyXP4G7ecJlyV9vTDlLjsmODzanX8VDbk9sRTyn2IccfLE6T5FARx27GMcwcV9J9IJK_GV3Lr1J1jDWU1oNq5upStYEfG8"/>
+</div>
+</div>
+<!-- Export & Action -->
+<div class="bg-inverse-surface p-6 rounded-xl text-white">
+<h4 class="font-headline font-bold text-lg mb-2">Diagnostic Summary</h4>
+<p class="text-inverse-on-surface/70 text-xs mb-6 leading-relaxed">
+                        The overall risk profile is elevated due to specific indemnification and sovereignty gaps. Immediate legal review is recommended before signature.
+                    </p>
+<div class="space-y-3">
+<button class="w-full py-3 bg-primary-container text-white rounded-lg font-bold flex items-center justify-center gap-2 hover:brightness-110 active:scale-95 transition-all">
+<span class="material-symbols-outlined text-sm">picture_as_pdf</span>
+                            Download Full PDF Report
+                        </button>
+<button class="w-full py-3 border border-outline-variant/30 text-white rounded-lg font-bold flex items-center justify-center gap-2 hover:bg-white/5 active:scale-95 transition-all">
+<span class="material-symbols-outlined text-sm">share</span>
+                            Share with Legal Team
+                        </button>
+</div>
+</div>
+<!-- Pulse / Scanning Graphic -->
+<div class="relative overflow-hidden bg-surface-container-highest rounded-xl p-6 border border-primary/10">
+<div class="absolute -right-4 -top-4 w-24 h-24 bg-primary/5 rounded-full blur-2xl"></div>
+<div class="flex items-center gap-3 mb-4">
+<span class="relative flex h-2 w-2">
+<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
+<span class="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
+</span>
+<span class="text-[10px] font-black uppercase tracking-widest text-primary">Live Context Engine</span>
+</div>
+<p class="text-xs font-medium text-on-secondary-container">AI is continuously monitoring industry regulatory changes (GDPR Art. 45, CCPA 2024 Updates) against this document.</p>
+</div>
+</aside>
+</div>
+</main>
+<!-- BottomNavBar -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full flex justify-around items-center px-4 pb-6 pt-3 bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl z-50 rounded-t-2xl shadow-[0px_-12px_32px_rgba(13,28,46,0.06)] border-t border-[#c3c6d7]/15">
+<button class="flex flex-col items-center justify-center text-[#434655] dark:text-slate-400 px-4 py-2 hover:text-[#004ac6] dark:hover:text-[#2563eb] active:scale-90 transition-transform">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-inter font-medium text-[10px] tracking-wide uppercase mt-1">Dashboard</span>
+</button>
+<button class="flex flex-col items-center justify-center text-[#434655] dark:text-slate-400 px-4 py-2 hover:text-[#004ac6] dark:hover:text-[#2563eb] active:scale-90 transition-transform">
+<span class="material-symbols-outlined">cloud_upload</span>
+<span class="font-inter font-medium text-[10px] tracking-wide uppercase mt-1">Upload</span>
+</button>
+<button class="flex flex-col items-center justify-center bg-gradient-to-br from-[#004ac6] to-[#2563eb] text-white rounded-xl px-4 py-2 active:scale-90 transition-transform">
+<span class="material-symbols-outlined">description</span>
+<span class="font-inter font-medium text-[10px] tracking-wide uppercase mt-1">Reports</span>
+</button>
+<button class="flex flex-col items-center justify-center text-[#434655] dark:text-slate-400 px-4 py-2 hover:text-[#004ac6] dark:hover:text-[#2563eb] active:scale-90 transition-transform">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-inter font-medium text-[10px] tracking-wide uppercase mt-1">Settings</span>
+</button>
+</nav>
+</body></html>

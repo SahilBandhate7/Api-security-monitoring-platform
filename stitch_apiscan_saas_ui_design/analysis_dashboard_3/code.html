@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>ClinicalContract | BioGenix Labs MSA Analysis</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&amp;family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-dim": "#ccdbf3",
+                        "tertiary-fixed-dim": "#ffb596",
+                        "surface-variant": "#d5e3fc",
+                        "secondary-fixed-dim": "#b4c5ff",
+                        "on-primary-fixed": "#00174b",
+                        "on-surface-variant": "#434655",
+                        "surface-container-lowest": "#ffffff",
+                        "on-secondary": "#ffffff",
+                        "on-error": "#ffffff",
+                        "primary-container": "#2563eb",
+                        "on-secondary-container": "#394c84",
+                        "primary-fixed-dim": "#b4c5ff",
+                        "on-tertiary-fixed-variant": "#7d2d00",
+                        "inverse-surface": "#233144",
+                        "secondary-container": "#acbfff",
+                        "on-tertiary-fixed": "#360f00",
+                        "on-surface": "#0d1c2e",
+                        "on-tertiary-container": "#ffede6",
+                        "background": "#f8f9ff",
+                        "tertiary-fixed": "#ffdbcd",
+                        "outline-variant": "#c3c6d7",
+                        "on-primary-fixed-variant": "#003ea8",
+                        "on-primary-container": "#eeefff",
+                        "on-tertiary": "#ffffff",
+                        "surface-container": "#e6eeff",
+                        "on-background": "#0d1c2e",
+                        "primary": "#004ac6",
+                        "on-secondary-fixed-variant": "#31447b",
+                        "inverse-on-surface": "#eaf1ff",
+                        "surface-bright": "#f8f9ff",
+                        "tertiary-container": "#bc4800",
+                        "on-error-container": "#93000a",
+                        "surface-container-high": "#dce9ff",
+                        "error-container": "#ffdad6",
+                        "surface": "#f8f9ff",
+                        "surface-container-highest": "#d5e3fc",
+                        "inverse-primary": "#b4c5ff",
+                        "error": "#ba1a1a",
+                        "outline": "#737686",
+                        "secondary-fixed": "#dbe1ff",
+                        "on-secondary-fixed": "#00174b",
+                        "on-primary": "#ffffff",
+                        "secondary": "#495c95",
+                        "primary-fixed": "#dbe1ff",
+                        "surface-container-low": "#eff4ff",
+                        "tertiary": "#943700",
+                        "surface-tint": "#0053db"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "fontFamily": {
+                        "headline": ["Manrope"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            line-height: 1;
+            vertical-align: middle;
+        }
+        body { font-family: 'Inter', sans-serif; }
+        h1, h2, h3, .headline { font-family: 'Manrope', sans-serif; }
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(24px);
+        }
+        .security-pulse {
+            height: 4px;
+            background: #c3c6d7;
+            position: relative;
+            overflow: hidden;
+            border-radius: 2px;
+        }
+        .security-pulse-fill {
+            position: absolute;
+            height: 100%;
+            background: #004ac6;
+            box-shadow: 0 0 8px #2563eb;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface antialiased">
+<!-- TopAppBar Shell -->
+<header class="fixed top-0 w-full z-50 bg-[#f8f9ff] px-6 py-4 flex justify-between items-center max-w-full mx-auto">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-[#004ac6] text-2xl">clinical_notes</span>
+<span class="font-headline font-extrabold text-xl tracking-tighter text-[#0d1c2e]">ClinicalContract</span>
+</div>
+<nav class="hidden md:flex items-center gap-8">
+<a class="text-[#004ac6] font-headline font-bold text-lg tracking-tight border-b-2 border-[#004ac6] transition-colors duration-200" href="#">Dashboard</a>
+<a class="text-[#434655] font-headline font-medium text-lg tracking-tight hover:text-[#004ac6] transition-colors duration-200" href="#">Upload</a>
+<a class="text-[#434655] font-headline font-medium text-lg tracking-tight hover:text-[#004ac6] transition-colors duration-200" href="#">Reports</a>
+<a class="text-[#434655] font-headline font-medium text-lg tracking-tight hover:text-[#004ac6] transition-colors duration-200" href="#">Settings</a>
+</nav>
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-full bg-surface-container-high flex items-center justify-center cursor-pointer active:opacity-70 transition-all overflow-hidden border-2 border-primary-fixed">
+<img class="w-full h-full object-cover" data-alt="professional male executive portrait in a corporate setting with soft natural lighting and neutral background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDXAg5asMbgxGvd484f6V-u6_eqk356Ile-aKRinmuTGY4IaOIIcXSzEjX7XPbc7XD8TpZ1KIDvDg-_t5a_6JJbvEuOgVRxNCNjEmXH8NbK69l8nxntF_z8IQmViljT_HsGmHohREGe9kx89LOAMwWkEUj29dsomqhLMcN3dqv3SbrD4miOdsYYoZdnVQaVTn3fdt7FLY37c7yRx7iq8aMdDz3V-lSHsIcThn6Jnk0vNp__6WuaktNCPdAbnIQ2aknZs7uaY_uj590"/>
+</div>
+</div>
+</header>
+<main class="pt-24 pb-32 px-6 max-w-7xl mx-auto space-y-8">
+<!-- Dashboard Header -->
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-4">
+<div>
+<nav class="flex items-center gap-2 text-on-surface-variant text-sm font-medium mb-2">
+<span>Contracts</span>
+<span class="material-symbols-outlined text-xs">chevron_right</span>
+<span class="text-primary">MSA - BioGenix Labs</span>
+</nav>
+<h1 class="text-4xl font-extrabold tracking-tight text-on-surface">MSA Analysis: BioGenix Labs</h1>
+<p class="text-on-surface-variant mt-2 font-medium">Last audited: October 24, 2024 • Version 2.4 (Active)</p>
+</div>
+<div class="flex gap-3">
+<button class="px-5 py-2.5 rounded-lg border border-outline-variant hover:bg-surface-container-low transition-colors font-semibold text-sm">Download PDF</button>
+<button class="px-5 py-2.5 rounded-lg bg-gradient-to-br from-primary to-primary-container text-white font-semibold text-sm shadow-sm hover:opacity-90 transition-all">Export Audit Log</button>
+</div>
+</div>
+<!-- Bento Grid Analysis Summary -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-6">
+<!-- Confidence Gauge Card -->
+<div class="md:col-span-4 bg-surface-container-lowest rounded-xl p-8 flex flex-col items-center justify-center relative overflow-hidden group">
+<div class="absolute top-0 right-0 w-32 h-32 bg-primary/5 rounded-full -mr-16 -mt-16 transition-transform group-hover:scale-110"></div>
+<div class="relative w-48 h-48">
+<svg class="w-full h-full" viewbox="0 0 100 100">
+<circle cx="50" cy="50" fill="none" r="45" stroke="#eff4ff" stroke-width="8"></circle>
+<circle cx="50" cy="50" fill="none" r="45" stroke="url(#gradient)" stroke-dasharray="282.7" stroke-dashoffset="4.5" stroke-linecap="round" stroke-width="8" transform="rotate(-90 50 50)"></circle>
+<defs>
+<lineargradient id="gradient" x1="0%" x2="100%" y1="0%" y2="0%">
+<stop offset="0%" style="stop-color:#004ac6"></stop>
+<stop offset="100%" style="stop-color:#2563eb"></stop>
+</lineargradient>
+</defs>
+</svg>
+<div class="absolute inset-0 flex flex-col items-center justify-center">
+<span class="text-4xl font-headline font-black text-on-surface">98.4%</span>
+<span class="text-xs font-bold text-on-surface-variant uppercase tracking-widest">Confidence</span>
+</div>
+</div>
+<p class="mt-6 text-center text-sm text-on-surface-variant px-4">AI engine precision based on <span class="text-primary font-bold">4.2k clinical datasets</span></p>
+</div>
+<!-- Key Metrics Grid -->
+<div class="md:col-span-8 grid grid-cols-1 sm:grid-cols-2 gap-6">
+<!-- Total Clauses -->
+<div class="bg-surface-container-low rounded-xl p-6 flex flex-col justify-between group cursor-default">
+<div class="flex justify-between items-start">
+<div class="p-3 bg-surface-container-lowest rounded-lg">
+<span class="material-symbols-outlined text-primary">description</span>
+</div>
+<span class="text-xs font-bold text-primary bg-primary-fixed px-2 py-1 rounded">Normal</span>
+</div>
+<div class="mt-8">
+<div class="text-4xl font-headline font-black text-on-surface">142</div>
+<div class="text-on-surface-variant font-semibold mt-1">Total Clauses Analyzed</div>
+</div>
+<div class="mt-4 security-pulse">
+<div class="security-pulse-fill w-full"></div>
+</div>
+</div>
+<!-- Compliance % -->
+<div class="bg-surface-container-low rounded-xl p-6 flex flex-col justify-between group cursor-default">
+<div class="flex justify-between items-start">
+<div class="p-3 bg-surface-container-lowest rounded-lg">
+<span class="material-symbols-outlined text-primary">verified_user</span>
+</div>
+<span class="text-xs font-bold text-primary bg-primary-fixed px-2 py-1 rounded">High Integrity</span>
+</div>
+<div class="mt-8">
+<div class="text-4xl font-headline font-black text-on-surface">94%</div>
+<div class="text-on-surface-variant font-semibold mt-1">Regulatory Compliance</div>
+</div>
+<div class="mt-4 security-pulse">
+<div class="security-pulse-fill w-[94%]"></div>
+</div>
+</div>
+<!-- Key Risks Summary -->
+<div class="sm:col-span-2 bg-surface-container-lowest rounded-xl p-8 border border-outline-variant/15 flex flex-col md:flex-row items-center gap-8">
+<div class="flex-1">
+<h3 class="text-lg font-headline font-bold mb-4">Risk Distribution</h3>
+<div class="flex items-center gap-4">
+<div class="flex-1 space-y-2">
+<div class="flex justify-between text-xs font-bold uppercase tracking-tighter">
+<span>High Priority</span>
+<span class="text-error">03</span>
+</div>
+<div class="h-2 bg-surface-container-low rounded-full overflow-hidden">
+<div class="h-full bg-error w-2/12"></div>
+</div>
+</div>
+<div class="flex-1 space-y-2">
+<div class="flex justify-between text-xs font-bold uppercase tracking-tighter">
+<span>Medium Priority</span>
+<span class="text-tertiary">08</span>
+</div>
+<div class="h-2 bg-surface-container-low rounded-full overflow-hidden">
+<div class="h-full bg-tertiary w-5/12"></div>
+</div>
+</div>
+<div class="flex-1 space-y-2">
+<div class="flex justify-between text-xs font-bold uppercase tracking-tighter">
+<span>Standard</span>
+<span class="text-primary">131</span>
+</div>
+<div class="h-2 bg-surface-container-low rounded-full overflow-hidden">
+<div class="h-full bg-primary w-11/12"></div>
+</div>
+</div>
+</div>
+</div>
+<div class="w-px h-16 bg-outline-variant/30 hidden md:block"></div>
+<div class="flex flex-col items-center md:items-start">
+<div class="text-3xl font-headline font-black text-error">03</div>
+<div class="text-xs font-bold text-on-surface-variant uppercase tracking-widest mt-1">Critical Risks</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Extracted Clauses Section -->
+<section class="mt-12">
+<div class="flex items-center justify-between mb-8">
+<h2 class="text-2xl font-headline font-bold tracking-tight">Extracted Clauses &amp; Diagnostics</h2>
+<div class="flex bg-surface-container-low p-1 rounded-lg">
+<button class="px-4 py-1.5 rounded-md bg-surface-container-lowest shadow-sm text-sm font-bold text-primary">All Clauses</button>
+<button class="px-4 py-1.5 rounded-md text-sm font-medium text-on-surface-variant hover:text-primary transition-colors">Anomalies Only</button>
+</div>
+</div>
+<div class="space-y-4">
+<!-- Clause Item 1: High Risk -->
+<div class="bg-surface-container-lowest rounded-xl p-6 transition-all hover:bg-surface border-l-4 border-error">
+<div class="flex flex-col md:flex-row md:items-start gap-6">
+<div class="flex-1">
+<div class="flex items-center gap-3 mb-3">
+<span class="text-[10px] font-bold uppercase tracking-widest bg-error-container text-on-error-container px-2 py-1 rounded">High Risk</span>
+<span class="text-xs font-medium text-on-surface-variant">Section 14.2: Liability Limitation</span>
+</div>
+<h4 class="text-lg font-headline font-bold mb-2">Aggregate Liability Cap Exclusion</h4>
+<p class="text-on-surface-variant leading-relaxed text-sm">The clause fails to explicitly exclude clinical trial malpractice from the general liability cap, potentially exposing the provider to unlimited damages in high-risk phases.</p>
+</div>
+<div class="w-full md:w-48 space-y-3">
+<div class="p-3 bg-surface-container-low rounded-lg text-xs">
+<span class="block font-bold mb-1 uppercase tracking-tighter text-on-surface-variant">AI Suggestion</span>
+                                Insert specific exclusion for gross negligence and clinical trial mishaps.
+                            </div>
+</div>
+</div>
+</div>
+<!-- Clause Item 2: Medium Risk -->
+<div class="bg-surface-container-lowest rounded-xl p-6 transition-all hover:bg-surface border-l-4 border-tertiary">
+<div class="flex flex-col md:flex-row md:items-start gap-6">
+<div class="flex-1">
+<div class="flex items-center gap-3 mb-3">
+<span class="text-[10px] font-bold uppercase tracking-widest bg-tertiary-fixed text-tertiary px-2 py-1 rounded">Medium Risk</span>
+<span class="text-xs font-medium text-on-surface-variant">Section 8.5: Data Privacy</span>
+</div>
+<h4 class="text-lg font-headline font-bold mb-2">GDPR Cross-Border Transfer Compliance</h4>
+<p class="text-on-surface-variant leading-relaxed text-sm">Mentions EU data transfer but lacks current Standard Contractual Clauses (SCCs) references for 2024 compliance standards.</p>
+</div>
+<div class="w-full md:w-48 space-y-3">
+<div class="p-3 bg-surface-container-low rounded-lg text-xs">
+<span class="block font-bold mb-1 uppercase tracking-tighter text-on-surface-variant">AI Suggestion</span>
+                                Update SCC templates to 2021/914/EU version.
+                            </div>
+</div>
+</div>
+</div>
+<!-- Clause Item 3: Low Risk -->
+<div class="bg-surface-container-lowest rounded-xl p-6 transition-all hover:bg-surface border-l-4 border-primary">
+<div class="flex flex-col md:flex-row md:items-start gap-6">
+<div class="flex-1">
+<div class="flex items-center gap-3 mb-3">
+<span class="text-[10px] font-bold uppercase tracking-widest bg-surface-container-high text-primary px-2 py-1 rounded">Low Risk</span>
+<span class="text-xs font-medium text-on-surface-variant">Section 4.1: Service Levels</span>
+</div>
+<h4 class="text-lg font-headline font-bold mb-2">Uptime Guarantee Definition</h4>
+<p class="text-on-surface-variant leading-relaxed text-sm">Standard 99.9% uptime requirement. Defined downtime periods are industry standard, though notification window is slightly aggressive (4 hours).</p>
+</div>
+<div class="w-full md:w-48 space-y-3">
+<div class="p-3 bg-surface-container-low rounded-lg text-xs">
+<span class="block font-bold mb-1 uppercase tracking-tighter text-on-surface-variant">AI Suggestion</span>
+                                Negotiate notification window to 12 hours for non-critical maintenance.
+                            </div>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- BottomNavBar Mobile -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full flex justify-around items-center px-4 pb-6 pt-3 bg-white/80 backdrop-blur-xl z-50 rounded-t-2xl shadow-[0px_-12px_32px_rgba(13,28,46,0.06)]">
+<a class="flex flex-col items-center justify-center bg-[#eff4ff] text-[#004ac6] rounded-xl px-3 py-1.5 transition-transform scale-95 active:scale-90" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-label font-semibold text-[10px] uppercase tracking-widest mt-1">Dashboard</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#434655] px-3 py-1.5 transition-transform scale-95 active:scale-90" href="#">
+<span class="material-symbols-outlined">cloud_upload</span>
+<span class="font-label font-semibold text-[10px] uppercase tracking-widest mt-1">Upload</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#434655] px-3 py-1.5 transition-transform scale-95 active:scale-90" href="#">
+<span class="material-symbols-outlined">description</span>
+<span class="font-label font-semibold text-[10px] uppercase tracking-widest mt-1">Reports</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#434655] px-3 py-1.5 transition-transform scale-95 active:scale-90" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-label font-semibold text-[10px] uppercase tracking-widest mt-1">Settings</span>
+</a>
+</nav>
+<!-- Footer -->
+<footer class="w-full py-12 px-8 border-t border-[#c3c6d7]/10 bg-[#f8f9ff]">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center max-w-7xl mx-auto">
+<div class="flex flex-col gap-4">
+<span class="font-headline font-black text-sm text-[#0d1c2e]">Clinical Intelligence Framework</span>
+<p class="font-body text-xs text-[#434655]">© 2024 Clinical Intelligence Framework. All rights reserved.</p>
+</div>
+<div class="flex flex-wrap gap-x-6 gap-y-2 md:justify-end">
+<a class="font-body text-xs text-[#434655] hover:text-[#004ac6] transition-colors" href="#">Privacy Policy</a>
+<a class="font-body text-xs text-[#434655] hover:text-[#004ac6] transition-colors" href="#">Terms of Service</a>
+<a class="font-body text-xs text-[#434655] hover:text-[#004ac6] transition-colors" href="#">Security Audit</a>
+<a class="font-body text-xs text-[#434655] hover:text-[#004ac6] transition-colors" href="#">Contact Support</a>
+</div>
+</div>
+</footer>
+</body></html>

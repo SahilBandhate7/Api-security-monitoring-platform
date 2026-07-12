@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Clinical Intelligence | Login</title>
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Manrope:wght@700;800&amp;display=swap" rel="stylesheet"/>
+<!-- Icons -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "tertiary-fixed-dim": "#ffb596",
+                      "on-surface": "#0d1c2e",
+                      "on-error-container": "#93000a",
+                      "on-primary-container": "#eeefff",
+                      "inverse-on-surface": "#eaf1ff",
+                      "on-surface-variant": "#434655",
+                      "tertiary-container": "#bc4800",
+                      "background": "#f8f9ff",
+                      "surface-container-highest": "#d5e3fc",
+                      "on-error": "#ffffff",
+                      "on-tertiary-fixed-variant": "#7d2d00",
+                      "surface-bright": "#f8f9ff",
+                      "secondary-fixed": "#dbe1ff",
+                      "primary-fixed-dim": "#b4c5ff",
+                      "on-primary-fixed": "#00174b",
+                      "error": "#ba1a1a",
+                      "surface-container-high": "#dce9ff",
+                      "surface": "#f8f9ff",
+                      "on-tertiary-container": "#ffede6",
+                      "on-secondary-fixed": "#00174b",
+                      "error-container": "#ffdad6",
+                      "secondary-container": "#acbfff",
+                      "surface-container": "#e6eeff",
+                      "surface-container-lowest": "#ffffff",
+                      "primary-container": "#2563eb",
+                      "on-tertiary": "#ffffff",
+                      "on-secondary-container": "#394c84",
+                      "secondary-fixed-dim": "#b4c5ff",
+                      "secondary": "#495c95",
+                      "on-tertiary-fixed": "#360f00",
+                      "tertiary": "#943700",
+                      "outline": "#737686",
+                      "surface-dim": "#ccdbf3",
+                      "outline-variant": "#c3c6d7",
+                      "on-secondary": "#ffffff",
+                      "surface-variant": "#d5e3fc",
+                      "on-primary": "#ffffff",
+                      "surface-tint": "#0053db",
+                      "inverse-surface": "#233144",
+                      "on-background": "#0d1c2e",
+                      "on-primary-fixed-variant": "#003ea8",
+                      "primary-fixed": "#dbe1ff",
+                      "primary": "#004ac6",
+                      "on-secondary-fixed-variant": "#31447b",
+                      "inverse-primary": "#b4c5ff",
+                      "tertiary-fixed": "#ffdbcd",
+                      "surface-container-low": "#eff4ff"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.5rem",
+                      "lg": "1rem",
+                      "xl": "1.25rem",
+                      "full": "9999px"
+              },
+              "fontFamily": {
+                      "headline": ["Manrope", "sans-serif"],
+                      "body": ["Inter", "sans-serif"],
+                      "label": ["Inter", "sans-serif"]
+              }
+            },
+          },
+        }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; background-color: #f8f9ff; }
+        .font-headline { font-family: 'Manrope', sans-serif; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        .bg-clinical-gradient {
+            background: linear-gradient(135deg, #004ac6 0%, #2563eb 100%);
+        }
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+        }
+    </style>
+</head>
+<body class="flex min-h-screen overflow-hidden selection:bg-primary-container selection:text-white">
+<!-- Left Side: Digital Surgeon Branding -->
+<section class="hidden lg:flex lg:w-7/12 relative bg-on-surface overflow-hidden items-center justify-center p-24">
+<!-- Abstract Security Geometry -->
+<div class="absolute inset-0 z-0">
+<div class="absolute top-[-10%] right-[-10%] w-[60%] h-[60%] rounded-full bg-primary/20 blur-[120px]"></div>
+<div class="absolute bottom-[-5%] left-[-5%] w-[40%] h-[40%] rounded-full bg-secondary/10 blur-[100px]"></div>
+<div class="absolute inset-0 opacity-10" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDYNhr4dRcJxKn89el_Qj1UotND6KM6LqfnhPuK1P5qaCR0rVliVE3LsjX2rdODP1tlDP_D5q4ZPxZs-VWMgOyIGIn-NLE4jYyk2-Fc46KXzhOrXztFtk5DOlARpjQPflvqPJZS94Fog1NKG_0ebE4SfEk3MF7TnRj-1LdsMeAKbHL3GXh-jZWkxWtVyX1PVUMk8001iKA5DRGE2ktWs8pSnoZgVHDtmVN1mdnt3r7bGRapbGI_gShKdAl0aRS2KCZEqYgX_XUx3no');">
+</div>
+</div>
+<div class="relative z-10 w-full max-w-2xl">
+<!-- Brand Mark -->
+<div class="flex items-center gap-3 mb-12">
+<div class="w-12 h-12 rounded-lg bg-clinical-gradient flex items-center justify-center">
+<span class="material-symbols-outlined text-white text-3xl" data-icon="clinical_notes">clinical_notes</span>
+</div>
+<h1 class="font-headline font-black text-3xl text-surface tracking-tighter">APIScan</h1>
+</div>
+<!-- Content Area -->
+<div class="space-y-6">
+<h2 class="font-headline text-5xl font-extrabold text-white leading-tight tracking-tight">
+                    Secure your APIs with <br/>
+<span class="text-primary-fixed">smart analysis.</span>
+</h2>
+<p class="text-secondary-fixed text-lg max-w-md font-light leading-relaxed">
+                    The precision of a medical instrument. The authority of clinical intelligence. Protect your digital architecture with the surgeon's touch.
+                </p>
+<!-- Data Visualizer Mock (Clinical Aesthetics) -->
+<div class="mt-16 grid grid-cols-2 gap-4">
+<div class="bg-white/5 border border-white/10 rounded-xl p-6 backdrop-blur-md">
+<div class="flex items-center gap-2 mb-4">
+<span class="material-symbols-outlined text-primary-fixed-dim text-sm" data-icon="shield_heart">shield_with_heart</span>
+<span class="text-white/40 text-[10px] uppercase tracking-widest font-bold">Health Score</span>
+</div>
+<div class="text-3xl font-headline font-bold text-white">98.4%</div>
+<div class="w-full bg-white/10 h-1 mt-4 rounded-full overflow-hidden">
+<div class="bg-primary-container h-full w-[98%] shadow-[0_0_8px_rgba(37,99,235,0.8)]"></div>
+</div>
+</div>
+<div class="bg-white/5 border border-white/10 rounded-xl p-6 backdrop-blur-md">
+<div class="flex items-center gap-2 mb-4">
+<span class="material-symbols-outlined text-tertiary-fixed-dim text-sm" data-icon="analytics">analytics</span>
+<span class="text-white/40 text-[10px] uppercase tracking-widest font-bold">Analysis Rate</span>
+</div>
+<div class="text-3xl font-headline font-bold text-white">4.2ms</div>
+<div class="flex gap-1 mt-4">
+<div class="w-2 h-4 bg-primary/40 rounded-sm"></div>
+<div class="w-2 h-6 bg-primary/60 rounded-sm"></div>
+<div class="w-2 h-3 bg-primary/30 rounded-sm"></div>
+<div class="w-2 h-8 bg-primary-container rounded-sm"></div>
+</div>
+</div>
+</div>
+</div>
+<!-- Bottom Illustration -->
+<div class="absolute -bottom-48 -right-24 opacity-40">
+<img alt="Security Mesh" class="w-[600px]" data-alt="abstract digital security mesh with glowing blue lines and dots minimalist clinical aesthetic dark background high contrast 3d render" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAXTc2q2MurdIeOq4cHxLtABmLouJ6K3FnMkMOHP-ddOCemCrKniVl9KlcRPpt6w6bxAr6crgo55vt6mMSiFt7HoI0uLhRUPb455kmp4x3XcXmx-P7n_8mFIxRIn51WQlupKLFgvv4rDlTU29WUw5y9ngrSOp10YTGnWydvdG1sIMeAEoEU7EE-CAenXtZlAzvl3VH3_g1ck3d1raPgt990NEuk_37TwZK13lixQVXZciU1uhM_3Pb0RQyyLvLHC4E7aTEN1r00hng"/>
+</div>
+</div>
+</section>
+<!-- Right Side: Minimalist Login Form -->
+<main class="w-full lg:w-5/12 bg-background flex items-center justify-center p-8 md:p-16">
+<div class="w-full max-w-md">
+<div class="mb-10 lg:hidden">
+<div class="flex items-center gap-2 mb-6">
+<div class="w-10 h-10 rounded-lg bg-clinical-gradient flex items-center justify-center">
+<span class="material-symbols-outlined text-white text-2xl" data-icon="clinical_notes">clinical_notes</span>
+</div>
+<h1 class="font-headline font-black text-2xl text-on-surface tracking-tighter">APIScan</h1>
+</div>
+</div>
+<header class="mb-10">
+<h3 class="font-headline text-3xl font-extrabold text-on-surface tracking-tight mb-2">Welcome Back</h3>
+<p class="text-on-surface-variant font-medium text-sm">Enter your credentials to access the terminal.</p>
+</header>
+<form action="#" class="space-y-6" method="POST">
+<!-- Input: Email -->
+<div class="space-y-2 group">
+<label class="text-[10px] uppercase tracking-widest font-bold text-on-surface-variant ml-1" for="email">Email Address</label>
+<div class="relative">
+<input class="w-full px-5 py-4 bg-surface-container-low border-0 rounded-lg text-on-surface placeholder:text-outline text-sm focus:ring-2 focus:ring-primary/20 focus:bg-white transition-all duration-200" id="email" name="email" placeholder="name@company.com" type="email"/>
+<span class="absolute right-4 top-1/2 -translate-y-1/2 material-symbols-outlined text-outline group-focus-within:text-primary transition-colors" data-icon="alternate_email">alternate_email</span>
+</div>
+</div>
+<!-- Input: Password -->
+<div class="space-y-2 group">
+<div class="flex justify-between items-end ml-1">
+<label class="text-[10px] uppercase tracking-widest font-bold text-on-surface-variant" for="password">Password</label>
+<a class="text-[10px] uppercase tracking-widest font-bold text-primary hover:text-primary-container transition-colors" href="#">Forgot Password?</a>
+</div>
+<div class="relative">
+<input class="w-full px-5 py-4 bg-surface-container-low border-0 rounded-lg text-on-surface placeholder:text-outline text-sm focus:ring-2 focus:ring-primary/20 focus:bg-white transition-all duration-200" id="password" name="password" placeholder="••••••••" type="password"/>
+<span class="absolute right-4 top-1/2 -translate-y-1/2 material-symbols-outlined text-outline group-focus-within:text-primary transition-colors" data-icon="lock">lock</span>
+</div>
+</div>
+<!-- Remember Me -->
+<div class="flex items-center gap-3">
+<div class="flex items-center h-5">
+<input class="w-4 h-4 text-primary border-outline-variant rounded bg-surface-container focus:ring-primary/20" id="remember" type="checkbox"/>
+</div>
+<label class="text-xs font-medium text-on-surface-variant cursor-pointer" for="remember">Keep me logged in for 30 days</label>
+</div>
+<!-- Login Button -->
+<button class="w-full py-4 px-6 bg-clinical-gradient text-white font-bold rounded-lg shadow-xl shadow-primary/10 hover:shadow-primary/20 active:scale-[0.98] transition-all flex items-center justify-center gap-2 group" type="submit">
+<span>Sign In</span>
+<span class="material-symbols-outlined text-lg group-hover:translate-x-1 transition-transform" data-icon="arrow_forward">arrow_forward</span>
+</button>
+</form>
+<div class="mt-10 flex items-center gap-4">
+<div class="h-px flex-1 bg-outline-variant/30"></div>
+<span class="text-[10px] font-bold text-outline uppercase tracking-widest">Enterprise SSO</span>
+<div class="h-px flex-1 bg-outline-variant/30"></div>
+</div>
+<!-- Social/SSO Login -->
+<div class="mt-8 grid grid-cols-2 gap-4">
+<button class="flex items-center justify-center gap-2 py-3 px-4 bg-surface-container-lowest border border-outline-variant/30 rounded-lg text-on-surface text-sm font-semibold hover:bg-surface-container-low transition-colors">
+<img alt="Google" class="w-4 h-4" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD8Mk8W48bz6C2divi1N_Zng89rbwJVI0nT7PHmqxEnuSQsHtvGY4z-czySB92RKg2IFFlx1QL9HZXN5XchE2KokYpa8VP8nbvVv0OvUnS81f0dA88d9KpnI8CfECf2Aiw3o5oNqGwNjDZgQIkb8heWPVJlvUwhzeA2OfethcohImFrEuhvUX6E6NEaCQLtbtwq91bExoZ52LZoDl9vR7qa63hfddvWVHfYg5NXYruosO6ySzAnvVo095pzV9N4kHZH7-5XXO3g4Po"/>
+<span>Google</span>
+</button>
+<button class="flex items-center justify-center gap-2 py-3 px-4 bg-surface-container-lowest border border-outline-variant/30 rounded-lg text-on-surface text-sm font-semibold hover:bg-surface-container-low transition-colors">
+<span class="material-symbols-outlined text-lg" data-icon="hub">hub</span>
+<span>Okta</span>
+</button>
+</div>
+<footer class="mt-12 text-center">
+<p class="text-xs text-on-surface-variant">
+                    Don't have an account? 
+                    <a class="text-primary font-bold hover:underline decoration-2 underline-offset-4" href="#">Request Access</a>
+</p>
+</footer>
+</div>
+</main>
+<!-- Global Footer Branding (Matching Design System Footer logic) -->
+<div class="fixed bottom-0 left-0 w-full lg:w-7/12 px-12 py-8 z-20 pointer-events-none hidden lg:block">
+<div class="flex justify-between items-center opacity-60">
+<span class="font-label text-[10px] uppercase tracking-[0.2em] text-secondary-fixed">System Version 2.4.0-Clinical</span>
+<div class="flex gap-6 pointer-events-auto">
+<a class="text-secondary-fixed font-label text-[10px] uppercase tracking-widest hover:text-white transition-colors" href="#">Privacy</a>
+<a class="text-secondary-fixed font-label text-[10px] uppercase tracking-widest hover:text-white transition-colors" href="#">Terms</a>
+</div>
+</div>
+</div>
+</body></html>

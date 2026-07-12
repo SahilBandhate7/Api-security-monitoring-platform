@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Upload Documents - ClinicalAI Contracts</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Manrope:wght@600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "tertiary-fixed-dim": "#ffb596",
+                        "inverse-primary": "#b4c5ff",
+                        "secondary-fixed-dim": "#b4c5ff",
+                        "on-tertiary-fixed-variant": "#7d2d00",
+                        "on-secondary-fixed-variant": "#31447b",
+                        "secondary": "#495c95",
+                        "on-surface": "#0d1c2e",
+                        "surface": "#f8f9ff",
+                        "on-surface-variant": "#434655",
+                        "on-secondary": "#ffffff",
+                        "background": "#f8f9ff",
+                        "tertiary-container": "#bc4800",
+                        "on-primary-container": "#eeefff",
+                        "on-background": "#0d1c2e",
+                        "on-tertiary-fixed": "#360f00",
+                        "surface-dim": "#ccdbf3",
+                        "surface-container": "#e6eeff",
+                        "primary-container": "#2563eb",
+                        "on-secondary-container": "#394c84",
+                        "on-primary": "#ffffff",
+                        "error-container": "#ffdad6",
+                        "primary": "#004ac6",
+                        "outline": "#737686",
+                        "inverse-surface": "#233144",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-container-highest": "#d5e3fc",
+                        "surface-container-high": "#dce9ff",
+                        "on-error": "#ffffff",
+                        "secondary-fixed": "#dbe1ff",
+                        "on-secondary-fixed": "#00174b",
+                        "on-primary-fixed-variant": "#003ea8",
+                        "surface-container-low": "#eff4ff",
+                        "tertiary-fixed": "#ffdbcd",
+                        "on-tertiary": "#ffffff",
+                        "tertiary": "#943700",
+                        "primary-fixed-dim": "#b4c5ff",
+                        "on-tertiary-container": "#ffede6",
+                        "surface-tint": "#0053db",
+                        "error": "#ba1a1a",
+                        "outline-variant": "#c3c6d7",
+                        "on-primary-fixed": "#00174b",
+                        "surface-variant": "#d5e3fc",
+                        "primary-fixed": "#dbe1ff",
+                        "inverse-on-surface": "#eaf1ff",
+                        "on-error-container": "#93000a",
+                        "surface-bright": "#f8f9ff",
+                        "secondary-container": "#acbfff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "fontFamily": {
+                        "headline": ["Manrope"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(24px);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background font-body text-on-surface">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 flex justify-between items-center px-6 h-16 bg-[#f8f9ff] dark:bg-[#0d1c2e]">
+<div class="flex items-center gap-3">
+<span class="text-xl font-bold tracking-tight text-[#0d1c2e] dark:text-[#f8f9ff] font-headline">ClinicalAI Contracts</span>
+</div>
+<div class="flex items-center gap-4">
+<button class="p-2 rounded-full hover:bg-[#dce9ff]/50 dark:hover:bg-[#2563eb]/20 transition-colors active:scale-95 duration-150">
+<span class="material-symbols-outlined text-[#434655] dark:text-[#c3c6d7]">notifications</span>
+</button>
+<div class="w-8 h-8 rounded-full overflow-hidden bg-surface-container-high border-2 border-primary/10">
+<img alt="User Profile" data-alt="professional portrait of a clinical researcher in a minimalist bright office setting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB-QdCBtmIuv1LRYNHB0xdMaUNhkAuQaTrzvOoNtCm4LIaNaZMk2BeH4niIq8zmaQTQUlfK09IPqZX3D52xmAAPig8h0GBWAR3kmZ6kv_hufyiZMJrbxEotXgFTipUumSi_TUnVKb-cXXKDFkOyXrIO3Waxlfgj3ie_JIprCItUgGLDn7INwoFxkNgpRdg6Hz_Z7SYq-UWDWvnhNDITc7t_2tySAzmizRXLPbxpbqC80sUJTF3Kr20zaCSQypmeCQiamR7BWZDdauw"/>
+</div>
+</div>
+</header>
+<main class="pt-24 pb-32 px-6 max-w-5xl mx-auto min-h-screen">
+<!-- Hero Section / Title -->
+<div class="mb-10">
+<h1 class="font-headline text-3xl font-bold tracking-tight text-on-surface mb-2">Upload Contracts</h1>
+<p class="text-on-surface-variant text-sm max-w-xl">Securely process clinical trial agreements and vendor contracts using our proprietary AI analysis engine.</p>
+</div>
+<!-- Asymmetric Bento-style Layout -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+<!-- Upload Area (Large Column) -->
+<div class="lg:col-span-8 flex flex-col gap-6">
+<div class="relative group h-96 rounded-xl bg-surface-container-lowest border-2 border-dashed border-outline-variant/30 flex flex-col items-center justify-center transition-all hover:border-primary/50 hover:bg-surface-container-low/50">
+<div class="absolute inset-0 overflow-hidden pointer-events-none rounded-xl opacity-10">
+<img class="w-full h-full object-cover grayscale" data-alt="abstract tech data visualization with glowing blue nodes and network connections on dark background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDEc3gkysz-d9GFjPFfPxi2ougf2hJln68zxqb1A9qFbjFfKaop5rOWRT_kF3B_QjFZB1QJPsQ9C-y4fUoHT9uTGnlfXz8iXvMOHsFuU_xmQ7sM1ZhC5KZX5L9egkDQcSHbYV5nVRoTASnbg1CpVCJmmdfbmlMw07npTh4Ii8Tn3gjwabXBjy7psoK3PSq3wDkHeL06iBhYLBNUEAEKVOPaNj4hLHUwabBV3BKemRluU5kHytZHqyX_siRwotROs3X7yh5F5IvZgrw"/>
+</div>
+<div class="z-10 flex flex-col items-center text-center px-8">
+<div class="w-16 h-16 rounded-full bg-primary-fixed-dim flex items-center justify-center mb-6 text-primary shadow-sm">
+<span class="material-symbols-outlined text-4xl" style="font-variation-settings: 'wght' 300;">cloud_upload</span>
+</div>
+<h2 class="font-headline text-xl font-bold text-on-surface mb-2">Drag and drop files here</h2>
+<p class="text-on-surface-variant text-sm mb-8">Support for PDF, DOCX, and scanned images (Max 50MB)</p>
+<button class="px-8 py-3 bg-gradient-to-br from-primary to-primary-container text-white font-medium rounded-lg flex items-center gap-2 transition-transform hover:scale-[1.02] active:scale-95 shadow-lg shadow-primary/20">
+<span class="material-symbols-outlined text-xl">add</span>
+                            Select File
+                        </button>
+</div>
+</div>
+<!-- Info Snippet -->
+<div class="p-5 rounded-xl bg-surface-container-low flex items-start gap-4">
+<span class="material-symbols-outlined text-primary">security</span>
+<div>
+<h4 class="font-headline font-semibold text-sm text-on-surface">HIPAA Compliant Processing</h4>
+<p class="text-xs text-on-surface-variant mt-1 leading-relaxed">All uploaded documents are encrypted in transit and at rest. PII is automatically redacted before AI analysis unless configured otherwise.</p>
+</div>
+</div>
+</div>
+<!-- Side Cards / Stats (Small Column) -->
+<div class="lg:col-span-4 flex flex-col gap-6">
+<div class="bg-surface-container-lowest p-6 rounded-xl border border-outline-variant/5">
+<h3 class="font-headline text-sm font-bold text-on-surface uppercase tracking-wider mb-4">System Status</h3>
+<div class="space-y-4">
+<div class="flex items-center justify-between">
+<span class="text-xs text-on-surface-variant">AI Analysis Core</span>
+<span class="flex items-center gap-1.5 text-xs font-bold text-[#008000]">
+<span class="w-1.5 h-1.5 rounded-full bg-[#008000] animate-pulse"></span>
+                                Optimal
+                            </span>
+</div>
+<div class="flex items-center justify-between">
+<span class="text-xs text-on-surface-variant">Processing Queue</span>
+<span class="text-xs font-bold text-on-surface">32s Average</span>
+</div>
+<div class="w-full h-1.5 bg-surface-container rounded-full overflow-hidden">
+<div class="w-3/4 h-full bg-primary rounded-full"></div>
+</div>
+</div>
+</div>
+<div class="bg-gradient-to-br from-inverse-surface to-[#0d1c2e] p-6 rounded-xl text-white">
+<div class="flex items-center gap-3 mb-4">
+<span class="material-symbols-outlined text-primary-fixed-dim">auto_awesome</span>
+<span class="font-headline font-bold text-sm">Smart Parsing</span>
+</div>
+<p class="text-xs text-outline-variant leading-relaxed">Our clinical AI automatically identifies termination clauses, payment milestones, and liability terms.</p>
+</div>
+</div>
+</div>
+<!-- Recent Document Processing List -->
+<section class="mt-12">
+<div class="flex items-center justify-between mb-6">
+<h2 class="font-headline text-xl font-bold text-on-surface">Recent Document Processing</h2>
+<button class="text-primary text-xs font-bold flex items-center gap-1 hover:underline">
+                    View History
+                    <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</button>
+</div>
+<div class="space-y-3">
+<!-- Item 1: Analyzing -->
+<div class="bg-surface-container-lowest p-4 rounded-xl flex items-center justify-between transition-colors hover:bg-white group">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-lg bg-surface-container-low flex items-center justify-center text-primary">
+<span class="material-symbols-outlined" data-weight="fill">description</span>
+</div>
+<div>
+<p class="text-sm font-bold text-on-surface">Phase_III_Sponsor_Agreement.pdf</p>
+<p class="text-[11px] text-on-surface-variant">2.4 MB • 14:22 PM</p>
+</div>
+</div>
+<div class="flex items-center gap-6">
+<div class="flex items-center gap-2">
+<div class="w-16 h-1 bg-surface-container-high rounded-full overflow-hidden">
+<div class="w-1/2 h-full bg-primary animate-pulse"></div>
+</div>
+<span class="text-xs font-medium text-primary">Analyzing...</span>
+</div>
+<button class="w-8 h-8 rounded-lg flex items-center justify-center text-on-surface-variant hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined text-lg">more_vert</span>
+</button>
+</div>
+</div>
+<!-- Item 2: Analyzed -->
+<div class="bg-surface-container-lowest p-4 rounded-xl flex items-center justify-between transition-colors hover:bg-white group">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-lg bg-surface-container-low flex items-center justify-center text-primary">
+<span class="material-symbols-outlined" data-weight="fill">description</span>
+</div>
+<div>
+<p class="text-sm font-bold text-on-surface">Vendor_Master_Service_v2.docx</p>
+<p class="text-[11px] text-on-surface-variant">1.1 MB • 13:05 PM</p>
+</div>
+</div>
+<div class="flex items-center gap-6">
+<div class="flex items-center gap-1.5 px-3 py-1 rounded-full bg-surface-container-high text-primary text-xs font-bold">
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+                            Analyzed
+                        </div>
+<button class="w-8 h-8 rounded-lg flex items-center justify-center text-on-surface-variant hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined text-lg">more_vert</span>
+</button>
+</div>
+</div>
+<!-- Item 3: Failed -->
+<div class="bg-surface-container-lowest p-4 rounded-xl flex items-center justify-between transition-colors hover:bg-white group">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-lg bg-surface-container-low flex items-center justify-center text-outline">
+<span class="material-symbols-outlined" data-weight="fill">description</span>
+</div>
+<div>
+<p class="text-sm font-bold text-on-surface">CRO_Site_Payment_Annex.pdf</p>
+<p class="text-[11px] text-on-surface-variant">842 KB • 12:48 PM</p>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<div class="flex items-center gap-1.5 px-3 py-1 rounded-full bg-error-container text-on-error-container text-xs font-bold">
+<span class="material-symbols-outlined text-sm">error</span>
+                            Upload Failed
+                        </div>
+<button class="px-4 py-1.5 text-xs font-bold text-primary hover:bg-primary/10 rounded-lg transition-colors border border-primary/20">
+                            Retry
+                        </button>
+<button class="w-8 h-8 rounded-lg flex items-center justify-center text-on-surface-variant hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined text-lg">more_vert</span>
+</button>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 w-full z-50 flex justify-around items-center px-4 py-3 pb-safe bg-white/80 dark:bg-[#0d1c2e]/80 backdrop-blur-xl border-t border-[#c3c6d7]/15 shadow-[0px_-4px_16px_rgba(13,28,46,0.04)] rounded-t-2xl md:hidden">
+<a class="flex flex-col items-center justify-center text-[#434655] dark:text-[#c3c6d7] hover:text-[#004ac6] dark:hover:text-[#2563eb] transition-transform active:scale-90" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-['Inter'] text-[11px] font-medium">Dashboard</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#004ac6] dark:text-[#2563eb] font-bold transition-transform active:scale-90" href="#">
+<span class="material-symbols-outlined">upload_file</span>
+<span class="font-['Inter'] text-[11px] font-medium">Upload</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#434655] dark:text-[#c3c6d7] hover:text-[#004ac6] dark:hover:text-[#2563eb] transition-transform active:scale-90" href="#">
+<span class="material-symbols-outlined">description</span>
+<span class="font-['Inter'] text-[11px] font-medium">Reports</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#434655] dark:text-[#c3c6d7] hover:text-[#004ac6] dark:hover:text-[#2563eb] transition-transform active:scale-90" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-['Inter'] text-[11px] font-medium">Settings</span>
+</a>
+</nav>
+<!-- Desktop Sidebar/Nav (Hidden on mobile) -->
+<div class="hidden md:flex fixed left-0 top-16 bottom-0 w-20 bg-surface-container-low flex-col items-center py-8 gap-8 border-r border-outline-variant/10">
+<a class="p-3 rounded-xl hover:bg-surface-container-high transition-colors group" href="#">
+<span class="material-symbols-outlined text-[#434655] group-hover:text-primary transition-colors">dashboard</span>
+</a>
+<a class="p-3 rounded-xl bg-primary-fixed-dim text-primary transition-colors shadow-sm" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">upload_file</span>
+</a>
+<a class="p-3 rounded-xl hover:bg-surface-container-high transition-colors group" href="#">
+<span class="material-symbols-outlined text-[#434655] group-hover:text-primary transition-colors">description</span>
+</a>
+<div class="mt-auto flex flex-col gap-8">
+<a class="p-3 rounded-xl hover:bg-surface-container-high transition-colors group" href="#">
+<span class="material-symbols-outlined text-[#434655] group-hover:text-primary transition-colors">settings</span>
+</a>
+<a class="p-3 rounded-xl hover:bg-surface-container-high transition-colors group" href="#">
+<span class="material-symbols-outlined text-[#434655] group-hover:text-primary transition-colors">logout</span>
+</a>
+</div>
+</div>
+</body></html>

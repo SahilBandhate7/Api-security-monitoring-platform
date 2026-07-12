@@ -1,0 +1,29 @@
+# ================================
+# Production Profile Overrides
+# ================================
+# Activate with: SPRING_PROFILES_ACTIVE=prod
+
+spring:
+  jpa:
+    show-sql: false
+    properties:
+      hibernate:
+        format_sql: false
+
+  flyway:
+    clean-disabled: true
+
+logging:
+  level:
+    root: WARN
+    com.apiscan: INFO
+    org.springframework.security: WARN
+    org.hibernate.SQL: WARN
+
+# Strict CORS — only production frontend domain
+app:
+  cors:
+    allowed-origins: ${FRONTEND_URL}
+
+sentry:
+  traces-sample-rate: 0.2

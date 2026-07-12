@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Login | APIScan Security</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "secondary-dim": "#465468",
+                        "on-surface": "#2a3439",
+                        "surface-container-lowest": "#ffffff",
+                        "inverse-on-surface": "#9a9d9f",
+                        "error": "#9f403d",
+                        "error-dim": "#4e0309",
+                        "on-tertiary-fixed-variant": "#59526e",
+                        "tertiary": "#625b77",
+                        "surface-container-high": "#e1e9ee",
+                        "surface-variant": "#d9e4ea",
+                        "surface-tint": "#0053db",
+                        "surface": "#f7f9fb",
+                        "primary": "#0053db",
+                        "on-primary": "#f8f7ff",
+                        "on-primary-fixed": "#003798",
+                        "on-surface-variant": "#566166",
+                        "on-background": "#2a3439",
+                        "on-tertiary-container": "#4f4964",
+                        "tertiary-container": "#dfd5f7",
+                        "primary-container": "#dbe1ff",
+                        "primary-dim": "#0048c1",
+                        "on-error-container": "#752121",
+                        "surface-container-highest": "#d9e4ea",
+                        "outline-variant": "#a9b4b9",
+                        "primary-fixed-dim": "#c7d3ff",
+                        "background": "#f7f9fb",
+                        "secondary-container": "#d5e3fc",
+                        "inverse-surface": "#0b0f10",
+                        "on-tertiary-fixed": "#3c3650",
+                        "tertiary-fixed": "#dfd5f7",
+                        "outline": "#717c82",
+                        "error-container": "#fe8983",
+                        "secondary-fixed": "#d5e3fc",
+                        "on-secondary-fixed-variant": "#4e5c71",
+                        "surface-dim": "#cfdce3",
+                        "surface-bright": "#f7f9fb",
+                        "on-secondary": "#f8f8ff",
+                        "on-tertiary": "#fdf7ff",
+                        "surface-container": "#e8eff3",
+                        "surface-container-low": "#f0f4f7",
+                        "inverse-primary": "#618bff",
+                        "on-secondary-fixed": "#324053",
+                        "secondary": "#526074",
+                        "on-primary-container": "#0048bf",
+                        "tertiary-dim": "#564f6b",
+                        "on-secondary-container": "#455367",
+                        "on-primary-fixed-variant": "#0050d4",
+                        "tertiary-fixed-dim": "#d0c7e8",
+                        "secondary-fixed-dim": "#c7d5ed",
+                        "on-error": "#fff7f6",
+                        "primary-fixed": "#dbe1ff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.5rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "2xl": "1.0rem",
+                        "full": "9999px"
+                    },
+                    "fontFamily": {
+                        "headline": ["Manrope"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            line-height: 1;
+            text-transform: none;
+            letter-spacing: normal;
+            word-wrap: normal;
+            white-space: nowrap;
+            direction: ltr;
+        }
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface font-body text-on-surface antialiased min-h-screen flex flex-col items-center justify-center relative overflow-hidden">
+<!-- Background Decor -->
+<div class="absolute inset-0 z-0">
+<div class="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] rounded-full bg-primary/5 blur-[120px]"></div>
+<div class="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] rounded-full bg-secondary/5 blur-[120px]"></div>
+</div>
+<!-- Login Container -->
+<main class="relative z-10 w-full max-w-[440px] px-6">
+<!-- Brand & Header -->
+<header class="text-center mb-10 space-y-3">
+<div class="inline-flex items-center gap-2 mb-4">
+<div class="w-12 h-12 rounded-xl bg-gradient-to-br from-primary to-primary-dim flex items-center justify-center shadow-lg shadow-primary/20">
+<span class="material-symbols-outlined text-on-primary text-3xl" data-icon="lens">lens</span>
+</div>
+<span class="text-3xl font-black tracking-tighter font-headline text-on-surface">APIScan</span>
+</div>
+<h1 class="font-headline font-extrabold text-2xl tracking-tight text-on-surface">Welcome Back</h1>
+<p class="text-on-surface-variant font-medium text-sm">Secure your APIs with smart analysis</p>
+</header>
+<!-- Form Card -->
+<div class="surface-container-lowest rounded-2xl p-8 md:p-10 shadow-[0_20px_40px_rgba(42,52,57,0.06)] ring-1 ring-black/[0.03]">
+<form action="#" class="space-y-6" method="POST">
+<!-- Email Field -->
+<div class="space-y-2">
+<label class="text-xs font-bold uppercase tracking-widest text-on-surface-variant ml-1" for="email">Email Address</label>
+<div class="relative group">
+<div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+<span class="material-symbols-outlined text-outline text-xl group-focus-within:text-primary transition-colors" data-icon="alternate_email">alternate_email</span>
+</div>
+<input class="block w-full pl-12 pr-4 py-3.5 bg-surface-container-low border-0 ring-1 ring-outline-variant/30 rounded-xl focus:ring-2 focus:ring-primary focus:bg-surface-container-lowest transition-all placeholder:text-outline outline-none text-sm font-medium" id="email" name="email" placeholder="name@company.com" required="" type="email"/>
+</div>
+</div>
+<!-- Password Field -->
+<div class="space-y-2">
+<div class="flex justify-between items-center px-1">
+<label class="text-xs font-bold uppercase tracking-widest text-on-surface-variant" for="password">Password</label>
+<a class="text-xs font-semibold text-primary hover:text-primary-dim transition-colors" href="#">Forgot Password?</a>
+</div>
+<div class="relative group">
+<div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+<span class="material-symbols-outlined text-outline text-xl group-focus-within:text-primary transition-colors" data-icon="lock">lock</span>
+</div>
+<input class="block w-full pl-12 pr-4 py-3.5 bg-surface-container-low border-0 ring-1 ring-outline-variant/30 rounded-xl focus:ring-2 focus:ring-primary focus:bg-surface-container-lowest transition-all placeholder:text-outline outline-none text-sm font-medium" id="password" name="password" placeholder="••••••••" required="" type="password"/>
+</div>
+</div>
+<!-- Remember Me -->
+<div class="flex items-center px-1">
+<input class="h-4 w-4 text-primary focus:ring-primary border-outline-variant/30 rounded bg-surface-container-low cursor-pointer" id="remember-me" name="remember-me" type="checkbox"/>
+<label class="ml-3 block text-sm font-medium text-on-surface-variant cursor-pointer" for="remember-me">
+                        Remember this device
+                    </label>
+</div>
+<!-- Submit Button -->
+<button class="w-full bg-gradient-to-br from-primary to-primary-dim text-on-primary font-bold py-4 px-6 rounded-xl shadow-lg shadow-primary/25 hover:shadow-xl hover:shadow-primary/30 active:scale-[0.98] transition-all flex items-center justify-center gap-2 group" type="submit">
+<span class="text-sm">Sign in to Console</span>
+<span class="material-symbols-outlined text-xl group-hover:translate-x-1 transition-transform" data-icon="arrow_forward">arrow_forward</span>
+</button>
+</form>
+<!-- Social Login / Divider -->
+<div class="mt-10">
+<div class="relative flex items-center mb-8">
+<div class="flex-grow border-t border-surface-container-high"></div>
+<span class="flex-shrink mx-4 text-[10px] font-bold uppercase tracking-widest text-outline">or continue with</span>
+<div class="flex-grow border-t border-surface-container-high"></div>
+</div>
+<div class="grid grid-cols-2 gap-4">
+<button class="flex items-center justify-center gap-2 py-3 px-4 bg-surface-container rounded-xl hover:bg-surface-container-high transition-colors active:scale-95">
+<img alt="Google Logo" class="w-5 h-5" data-alt="Official Google G logo in flat vector style with brand colors red yellow green blue" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBX06vBVJrrjbLJuCBcGCG_GPn0_yoiuPtM6yp4GVgYgJWkYn8HYg_hcv3QcCfp9jWe9PzpdWkf5tDn-cJM9AAmsoQ7d54f2UoYMYNZunjLZouAtOceu0ccA0hkHumoo-5m1WoMdVYADcE4mWya1W8JxqSefor31nO5u31200h1V7oaLNpQ3Q-kKOuBMw2XbAcjLSKB_1j308GjPBfB_CHBOgX07FZ-R_dUQ_Ib8pGbt_ZFVlTOK0xo3GpuWzLxtrk4CokWwceKu9A"/>
+<span class="text-xs font-bold text-on-secondary-container">Google</span>
+</button>
+<button class="flex items-center justify-center gap-2 py-3 px-4 bg-surface-container rounded-xl hover:bg-surface-container-high transition-colors active:scale-95">
+<span class="material-symbols-outlined text-xl text-on-secondary-container" data-icon="terminal">terminal</span>
+<span class="text-xs font-bold text-on-secondary-container">SSO</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Footer Info -->
+<footer class="mt-8 text-center">
+<p class="text-sm font-medium text-on-surface-variant">
+                New to APIScan? 
+                <a class="text-primary font-bold hover:underline ml-1" href="#">Create an account</a>
+</p>
+</footer>
+</main>
+<!-- Side Content / Brand Illustration (Asymmetric Hidden on Mobile) -->
+<div class="hidden lg:block absolute right-0 top-0 bottom-0 w-[35%] bg-surface-container-low overflow-hidden">
+<div class="absolute inset-0 flex items-center justify-center p-12">
+<div class="w-full max-w-lg space-y-12">
+<div class="relative">
+<!-- Decorative Trace Nodes -->
+<div class="space-y-4">
+<div class="flex items-center gap-4 bg-surface-container-lowest p-5 rounded-2xl shadow-sm border-l-4 border-primary">
+<div class="w-10 h-10 rounded-lg bg-primary-container flex items-center justify-center">
+<span class="material-symbols-outlined text-primary" data-icon="shield">shield</span>
+</div>
+<div>
+<div class="text-xs font-bold uppercase tracking-wider text-primary">API Endpoint Secured</div>
+<div class="text-sm font-mono text-on-surface">POST /api/v1/auth/validate</div>
+</div>
+<div class="ml-auto">
+<span class="material-symbols-outlined text-primary" data-icon="check_circle" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+</div>
+<div class="flex items-center gap-4 bg-surface-container-lowest/60 p-5 rounded-2xl ml-8">
+<div class="w-10 h-10 rounded-lg bg-surface-container flex items-center justify-center">
+<span class="material-symbols-outlined text-outline" data-icon="search">search</span>
+</div>
+<div>
+<div class="text-xs font-bold uppercase tracking-wider text-outline">Scanning...</div>
+<div class="text-sm font-mono text-on-surface-variant">GET /users/profile</div>
+</div>
+</div>
+<div class="flex items-center gap-4 bg-error-container/20 p-5 rounded-2xl border-l-4 border-error">
+<div class="w-10 h-10 rounded-lg bg-error-container flex items-center justify-center">
+<span class="material-symbols-outlined text-error" data-icon="warning">warning</span>
+</div>
+<div>
+<div class="text-xs font-bold uppercase tracking-wider text-error">Vulnerability Detected</div>
+<div class="text-sm font-mono text-on-surface">Broken Object Level Authorization</div>
+</div>
+</div>
+</div>
+</div>
+<div class="space-y-2">
+<h2 class="text-4xl font-headline font-black text-on-surface tracking-tight leading-tight">Elite Security <br/>for Modern APIs</h2>
+<p class="text-on-surface-variant font-medium leading-relaxed">
+                        Join over 2,000 security teams using the Intelligent Lens to find vulnerabilities before they reach production.
+                    </p>
+</div>
+</div>
+</div>
+<!-- Decorative abstract background for the sidebar -->
+<div class="absolute inset-0 z-[-1] opacity-40">
+<div class="absolute top-1/4 right-[-10%] w-[500px] h-[500px] rounded-full border-[1px] border-primary/20"></div>
+<div class="absolute top-1/4 right-[-5%] w-[500px] h-[500px] rounded-full border-[1px] border-primary/10"></div>
+</div>
+</div>
+</body></html>

@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>ClinicalAI Contracts | Precision Intelligence</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;400;700;800&amp;family=Inter:wght@300;400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-variant": "#d5e3fc",
+                        "primary-fixed": "#dbe1ff",
+                        "outline": "#737686",
+                        "outline-variant": "#c3c6d7",
+                        "on-secondary-container": "#394c84",
+                        "secondary-fixed": "#dbe1ff",
+                        "on-tertiary-fixed-variant": "#7d2d00",
+                        "on-error-container": "#93000a",
+                        "surface-bright": "#f8f9ff",
+                        "tertiary": "#943700",
+                        "on-tertiary": "#ffffff",
+                        "on-primary": "#ffffff",
+                        "error-container": "#ffdad6",
+                        "on-secondary-fixed-variant": "#31447b",
+                        "surface-dim": "#ccdbf3",
+                        "on-primary-fixed-variant": "#003ea8",
+                        "background": "#f8f9ff",
+                        "surface-tint": "#0053db",
+                        "inverse-primary": "#b4c5ff",
+                        "surface-container-high": "#dce9ff",
+                        "on-secondary": "#ffffff",
+                        "on-error": "#ffffff",
+                        "inverse-surface": "#233144",
+                        "secondary-fixed-dim": "#b4c5ff",
+                        "tertiary-container": "#bc4800",
+                        "secondary": "#495c95",
+                        "on-tertiary-container": "#ffede6",
+                        "secondary-container": "#acbfff",
+                        "primary": "#004ac6",
+                        "error": "#ba1a1a",
+                        "on-primary-fixed": "#00174b",
+                        "on-secondary-fixed": "#00174b",
+                        "primary-fixed-dim": "#b4c5ff",
+                        "surface-container-low": "#eff4ff",
+                        "on-tertiary-fixed": "#360f00",
+                        "on-surface-variant": "#434655",
+                        "tertiary-fixed": "#ffdbcd",
+                        "surface-container-lowest": "#ffffff",
+                        "surface": "#f8f9ff",
+                        "on-surface": "#0d1c2e",
+                        "primary-container": "#2563eb",
+                        "inverse-on-surface": "#eaf1ff",
+                        "tertiary-fixed-dim": "#ffb596",
+                        "surface-container": "#e6eeff",
+                        "on-primary-container": "#eeefff",
+                        "surface-container-highest": "#d5e3fc",
+                        "on-background": "#0d1c2e"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "1rem",
+                        "xl": "1.5rem",
+                        "full": "9999px"
+                    },
+                    "fontFamily": {
+                        "headline": ["Manrope", "sans-serif"],
+                        "body": ["Inter", "sans-serif"],
+                        "label": ["Inter", "sans-serif"]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+        }
+        .surgical-gradient {
+            background: linear-gradient(135deg, #004ac6 0%, #2563eb 100%);
+        }
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface font-body selection:bg-primary-fixed selection:text-on-primary-fixed">
+<!-- TopAppBar -->
+<header class="w-full top-0 sticky z-50 bg-[#f8f9ff] dark:bg-slate-950 flex justify-between items-center px-6 py-4">
+<div class="flex items-center gap-4">
+<div class="flex items-center justify-center w-10 h-10 rounded-lg surgical-gradient text-white">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">biotech</span>
+</div>
+<h1 class="font-headline font-black text-[#0d1c2e] dark:text-slate-100 text-lg tracking-tight">ClinicalAI Contracts</h1>
+</div>
+<nav class="hidden md:flex items-center gap-8">
+<a class="text-[#004ac6] dark:text-[#2563eb] font-headline font-bold text-sm tracking-tight transition-colors" href="#">Dashboard</a>
+<a class="text-[#434655] dark:text-slate-400 hover:bg-[#dce9ff] dark:hover:bg-slate-800 px-3 py-1 rounded-lg transition-colors font-headline font-bold text-sm tracking-tight" href="#">Upload</a>
+<a class="text-[#434655] dark:text-slate-400 hover:bg-[#dce9ff] dark:hover:bg-slate-800 px-3 py-1 rounded-lg transition-colors font-headline font-bold text-sm tracking-tight" href="#">Reports</a>
+<a class="text-[#434655] dark:text-slate-400 hover:bg-[#dce9ff] dark:hover:bg-slate-800 px-3 py-1 rounded-lg transition-colors font-headline font-bold text-sm tracking-tight" href="#">Settings</a>
+</nav>
+<div class="flex items-center gap-3">
+<button class="p-2 rounded-full hover:bg-[#dce9ff] transition-colors text-[#434655]">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<img alt="User Profile" class="w-10 h-10 rounded-full object-cover border-2 border-surface-container-high" data-alt="Close-up portrait of a professional male executive in a clean studio setting with soft blue ambient lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA4z8vMZVDeISP8LREMUTLw9PhWc7B-E5HIbgeB0VDTlhhbuFCsAxPF3W-O-RT2JLp3xpCQROsaxjoYS-ENoB6UbtOzt_Qx0pzNetbYl60QH5TO1iqkKmJBNnrQjT1tjfpdXH4uQxTPL4nBPMIGlAEtH63nT7U-QyqoTUIN7OHJxQfV4z7kyidDcfsRQFsjyloeh3OyXGlNs2aNpk2wH6Fu_If7e2sLONMZeEo6XgxUb555UA8kpS9rx0tzGPFnEQGygCni-ZdM0lE"/>
+</div>
+</header>
+<main class="relative min-h-[calc(100vh-80px)] overflow-hidden">
+<!-- Hero Section -->
+<section class="container mx-auto px-6 pt-12 pb-24 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+<!-- Content Left -->
+<div class="lg:col-span-6 space-y-8">
+<div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-surface-container text-primary font-headline font-bold text-xs uppercase tracking-widest">
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">verified</span>
+                    Diagnostic Grade Intelligence
+                </div>
+<h2 class="font-headline font-extrabold text-5xl lg:text-7xl text-on-surface leading-[1.1] tracking-tight">
+                    AI-Powered <br/>
+<span class="text-transparent bg-clip-text surgical-gradient">Contract Intelligence</span>
+</h2>
+<p class="text-on-surface-variant text-lg lg:text-xl max-w-xl leading-relaxed">
+                    Automate your legal review with precision clause extraction and real-time risk analysis. The digital surgeon for your legal ecosystem.
+                </p>
+<div class="flex flex-wrap gap-4 pt-4">
+<button class="surgical-gradient text-white px-8 py-4 rounded-lg font-headline font-bold text-lg hover:opacity-90 active:scale-95 transition-all flex items-center gap-3 shadow-lg shadow-primary/20">
+                        Get Started
+                        <span class="material-symbols-outlined">arrow_forward</span>
+</button>
+<button class="bg-surface-container-highest text-on-primary-fixed-variant px-8 py-4 rounded-lg font-headline font-bold text-lg hover:bg-surface-container-high transition-all">
+                        Watch Demo
+                    </button>
+</div>
+<div class="flex items-center gap-8 pt-8">
+<div class="flex flex-col">
+<span class="font-headline font-black text-3xl text-on-surface tracking-tighter">99.8%</span>
+<span class="text-xs text-on-surface-variant font-label uppercase tracking-widest">Accuracy Rate</span>
+</div>
+<div class="w-px h-12 bg-outline-variant/30"></div>
+<div class="flex flex-col">
+<span class="font-headline font-black text-3xl text-on-surface tracking-tighter">2s</span>
+<span class="text-xs text-on-surface-variant font-label uppercase tracking-widest">Analysis Time</span>
+</div>
+</div>
+</div>
+<!-- Visual Right (Asymmetric Bento) -->
+<div class="lg:col-span-6 relative">
+<div class="grid grid-cols-2 gap-4 relative z-10">
+<!-- Main Card -->
+<div class="col-span-2 glass-panel p-6 rounded-xl border border-outline-variant/15 shadow-[0px_12px_32px_rgba(13,28,46,0.06)]">
+<div class="flex items-center justify-between mb-6">
+<div class="flex items-center gap-3">
+<div class="w-2 h-2 rounded-full bg-primary animate-pulse"></div>
+<span class="font-headline font-bold text-sm">Clause Analysis Engine</span>
+</div>
+<span class="text-xs font-label text-on-surface-variant">V3.2 Active</span>
+</div>
+<div class="space-y-4">
+<div class="p-4 rounded-lg bg-surface-container-low flex items-center justify-between">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-primary">description</span>
+<div>
+<div class="text-sm font-bold">Liability_Limitation.pdf</div>
+<div class="text-[10px] text-on-surface-variant">Section 4.2 - High Complexity</div>
+</div>
+</div>
+<div class="px-2 py-1 rounded bg-error-container text-on-error-container text-[10px] font-bold uppercase tracking-wider">High Risk</div>
+</div>
+<div class="p-4 rounded-lg bg-surface border border-primary/20 flex items-center justify-between">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-primary">history_edu</span>
+<div>
+<div class="text-sm font-bold">Indemnification_Clause.docx</div>
+<div class="text-[10px] text-on-surface-variant">Section 8.1 - Standard</div>
+</div>
+</div>
+<div class="px-2 py-1 rounded bg-surface-container-high text-primary text-[10px] font-bold uppercase tracking-wider">Low Risk</div>
+</div>
+</div>
+</div>
+<!-- Side Card 1 -->
+<div class="bg-primary p-6 rounded-xl text-white">
+<span class="material-symbols-outlined text-4xl mb-4">analytics</span>
+<div class="text-sm font-bold mb-1">Pulse Monitor</div>
+<div class="text-2xl font-black font-headline">1.4k</div>
+<div class="text-[10px] opacity-70 uppercase tracking-widest mt-2">Daily Scans</div>
+</div>
+<!-- Side Card 2 -->
+<div class="bg-surface-container-lowest p-6 rounded-xl border border-outline-variant/15 flex flex-col justify-between">
+<div class="flex -space-x-2">
+<img alt="Legal Team" class="w-8 h-8 rounded-full border-2 border-white" data-alt="Portrait of a female legal expert in a professional setting with soft lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCzvmbLGxv4VuJyQhOhDxb_HXHfj_saszzXxh_tUJSxOh4-6KlybRTAao59yqqLI6IVyJJOrphqX5o5KGCaN-7xHiZHqSktrxtl_EUkTMX66kvW7hz2FBHaso7-V0csuiiJHJYAPI81oLMlFBLrShAb8adb5fHR4ws5z9j_OUL2eXg-3yW2JCdeackjoNgH4_vjOFL_ws6U97YmdA57d6tcPXhufIPctFfKd_OGpUC55O2KTV-X-9DiHscRgaUJn_R9g8WaFj4tDJY"/>
+<img alt="Legal Team" class="w-8 h-8 rounded-full border-2 border-white" data-alt="Portrait of a young male professional analyst with glasses" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBDo915N_dseYwzOYDpq1CKzkzNQaWotl4NRe99KysDDre_6aEvwoX9p14IDT7EOjcjLLW509KqkV8HBeATnNYgX0GCrkioQG7gpKxXSE6MRGa5ukDeUwl9dmY7Yh0VonTgam4BKgyJxtDJQSW6RiH4jnHXYM9kidPMcaCoxg4W08YpmXABpXmvDUPW0wxi-XNco-gG0_R7_gM8V0N033tfNcMm2kXlSDWFvKggDSe2YJEqLFUVKt56cct_OLn1TMohlsINsu3Mjr0"/>
+<div class="w-8 h-8 rounded-full bg-surface-container-high flex items-center justify-center text-[10px] font-bold">+12</div>
+</div>
+<div class="text-xs font-bold text-on-surface mt-4 leading-tight">Trusted by global legal departments.</div>
+</div>
+</div>
+<!-- Abstract Decorative Elements -->
+<div class="absolute -top-20 -right-20 w-80 h-80 surgical-gradient rounded-full opacity-10 blur-3xl -z-10"></div>
+<div class="absolute -bottom-10 -left-10 w-40 h-40 bg-secondary rounded-full opacity-10 blur-2xl -z-10"></div>
+</div>
+</section>
+<!-- Features Bento Grid -->
+<section class="container mx-auto px-6 py-24">
+<div class="text-center max-w-2xl mx-auto mb-16">
+<h3 class="font-headline font-extrabold text-4xl mb-4">Precision Diagnostic Tools</h3>
+<p class="text-on-surface-variant">Our AI doesn't just read; it understands the clinical structure of legal language.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+<!-- Feature 1 -->
+<div class="bg-surface-container-lowest p-8 rounded-xl border border-outline-variant/15 group hover:border-primary/30 transition-all">
+<div class="w-12 h-12 rounded-lg bg-surface-container-low flex items-center justify-center text-primary mb-6 group-hover:surgical-gradient group-hover:text-white transition-all">
+<span class="material-symbols-outlined">magnification_small</span>
+</div>
+<h4 class="font-headline font-bold text-xl mb-3">Deep Extraction</h4>
+<p class="text-on-surface-variant text-sm leading-relaxed">Isolate over 150+ legal clauses with 99.8% precision, identifying nuances that traditional OCR systems miss.</p>
+</div>
+<!-- Feature 2 -->
+<div class="bg-surface-container-lowest p-8 rounded-xl border border-outline-variant/15 group hover:border-primary/30 transition-all">
+<div class="w-12 h-12 rounded-lg bg-surface-container-low flex items-center justify-center text-primary mb-6 group-hover:surgical-gradient group-hover:text-white transition-all">
+<span class="material-symbols-outlined">monitoring</span>
+</div>
+<h4 class="font-headline font-bold text-xl mb-3">Risk Diagnosis</h4>
+<p class="text-on-surface-variant text-sm leading-relaxed">Real-time risk scoring using clinical data models to highlight unfavorable terms and missing protections.</p>
+</div>
+<!-- Feature 3 -->
+<div class="bg-surface-container-lowest p-8 rounded-xl border border-outline-variant/15 group hover:border-primary/30 transition-all">
+<div class="w-12 h-12 rounded-lg bg-surface-container-low flex items-center justify-center text-primary mb-6 group-hover:surgical-gradient group-hover:text-white transition-all">
+<span class="material-symbols-outlined">sync_alt</span>
+</div>
+<h4 class="font-headline font-bold text-xl mb-3">Surgical Redlining</h4>
+<p class="text-on-surface-variant text-sm leading-relaxed">Automated revision suggestions based on your organization's playbooks and historical precedent.</p>
+</div>
+</div>
+</section>
+</main>
+<!-- BottomNavBar (Mobile Only) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full glass-panel flex justify-around items-center px-4 pb-6 pt-3 z-50 rounded-t-2xl shadow-[0px_-12px_32px_rgba(13,28,46,0.06)] border-t border-outline-variant/15">
+<div class="flex flex-col items-center justify-center surgical-gradient text-white rounded-xl px-4 py-2 active:scale-90 transition-transform">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">dashboard</span>
+<span class="font-inter font-medium text-[10px] tracking-wide uppercase mt-1">Dashboard</span>
+</div>
+<div class="flex flex-col items-center justify-center text-[#434655] px-4 py-2 hover:text-[#004ac6] transition-colors">
+<span class="material-symbols-outlined">cloud_upload</span>
+<span class="font-inter font-medium text-[10px] tracking-wide uppercase mt-1">Upload</span>
+</div>
+<div class="flex flex-col items-center justify-center text-[#434655] px-4 py-2 hover:text-[#004ac6] transition-colors">
+<span class="material-symbols-outlined">description</span>
+<span class="font-inter font-medium text-[10px] tracking-wide uppercase mt-1">Reports</span>
+</div>
+<div class="flex flex-col items-center justify-center text-[#434655] px-4 py-2 hover:text-[#004ac6] transition-colors">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-inter font-medium text-[10px] tracking-wide uppercase mt-1">Settings</span>
+</div>
+</nav>
+<!-- Specialized Component: The "Security Pulse" floating FAB -->
+<button class="fixed bottom-10 right-10 w-16 h-16 rounded-full surgical-gradient text-white shadow-2xl flex items-center justify-center hover:scale-105 active:scale-95 transition-all z-40 hidden lg:flex">
+<span class="material-symbols-outlined text-3xl">add_circle</span>
+</button>
+<footer class="bg-surface-container-low py-12 px-6">
+<div class="container mx-auto grid grid-cols-1 md:grid-cols-4 gap-12">
+<div class="col-span-1 md:col-span-1">
+<div class="flex items-center gap-2 mb-6">
+<div class="w-8 h-8 rounded surgical-gradient text-white flex items-center justify-center">
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">biotech</span>
+</div>
+<span class="font-headline font-black text-on-surface">ClinicalAI</span>
+</div>
+<p class="text-on-surface-variant text-sm leading-relaxed">Revolutionizing legal infrastructure with the precision of clinical intelligence.</p>
+</div>
+<div class="space-y-4">
+<h5 class="font-headline font-bold text-sm uppercase tracking-widest text-primary">Product</h5>
+<ul class="space-y-2 text-sm text-on-surface-variant">
+<li><a class="hover:text-primary" href="#">Extraction Engine</a></li>
+<li><a class="hover:text-primary" href="#">Risk Diagnosis</a></li>
+<li><a class="hover:text-primary" href="#">Playbooks</a></li>
+</ul>
+</div>
+<div class="space-y-4">
+<h5 class="font-headline font-bold text-sm uppercase tracking-widest text-primary">Company</h5>
+<ul class="space-y-2 text-sm text-on-surface-variant">
+<li><a class="hover:text-primary" href="#">About</a></li>
+<li><a class="hover:text-primary" href="#">Clinical Standards</a></li>
+<li><a class="hover:text-primary" href="#">Security</a></li>
+</ul>
+</div>
+<div class="space-y-4">
+<h5 class="font-headline font-bold text-sm uppercase tracking-widest text-primary">Trust</h5>
+<ul class="space-y-2 text-sm text-on-surface-variant">
+<li><a class="hover:text-primary" href="#">Privacy Policy</a></li>
+<li><a class="hover:text-primary" href="#">SOC2 Compliance</a></li>
+<li><a class="hover:text-primary" href="#">Terms</a></li>
+</ul>
+</div>
+</div>
+<div class="container mx-auto mt-12 pt-8 border-t border-outline-variant/30 flex justify-between items-center text-[10px] text-on-surface-variant uppercase tracking-widest font-label">
+<span>© 2024 ClinicalAI Contracts. All Rights Reserved.</span>
+<div class="flex gap-4">
+<a class="hover:text-primary transition-colors" href="#">Twitter</a>
+<a class="hover:text-primary transition-colors" href="#">LinkedIn</a>
+</div>
+</div>
+</footer>
+</body></html>

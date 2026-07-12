@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Reports - APIScan Security</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "secondary-dim": "#465468",
+                        "on-surface": "#2a3439",
+                        "surface-container-lowest": "#ffffff",
+                        "inverse-on-surface": "#9a9d9f",
+                        "error": "#9f403d",
+                        "error-dim": "#4e0309",
+                        "on-tertiary-fixed-variant": "#59526e",
+                        "tertiary": "#625b77",
+                        "surface-container-high": "#e1e9ee",
+                        "surface-variant": "#d9e4ea",
+                        "surface-tint": "#0053db",
+                        "surface": "#f7f9fb",
+                        "primary": "#0053db",
+                        "on-primary": "#f8f7ff",
+                        "on-primary-fixed": "#003798",
+                        "on-surface-variant": "#566166",
+                        "on-background": "#2a3439",
+                        "on-tertiary-container": "#4f4964",
+                        "tertiary-container": "#dfd5f7",
+                        "primary-container": "#dbe1ff",
+                        "primary-dim": "#0048c1",
+                        "on-error-container": "#752121",
+                        "surface-container-highest": "#d9e4ea",
+                        "outline-variant": "#a9b4b9",
+                        "primary-fixed-dim": "#c7d3ff",
+                        "background": "#f7f9fb",
+                        "secondary-container": "#d5e3fc",
+                        "inverse-surface": "#0b0f10",
+                        "on-tertiary-fixed": "#3c3650",
+                        "tertiary-fixed": "#dfd5f7",
+                        "outline": "#717c82",
+                        "error-container": "#fe8983",
+                        "secondary-fixed": "#d5e3fc",
+                        "on-secondary-fixed-variant": "#4e5c71",
+                        "surface-dim": "#cfdce3",
+                        "surface-bright": "#f7f9fb",
+                        "on-secondary": "#f8f8ff",
+                        "on-tertiary": "#fdf7ff",
+                        "surface-container": "#e8eff3",
+                        "surface-container-low": "#f0f4f7",
+                        "inverse-primary": "#618bff",
+                        "on-secondary-fixed": "#324053",
+                        "secondary": "#526074",
+                        "on-primary-container": "#0048bf",
+                        "tertiary-dim": "#564f6b",
+                        "on-secondary-container": "#455367",
+                        "on-primary-fixed-variant": "#0050d4",
+                        "tertiary-fixed-dim": "#d0c7e8",
+                        "secondary-fixed-dim": "#c7d5ed",
+                        "on-error": "#fff7f6",
+                        "primary-fixed": "#dbe1ff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "fontFamily": {
+                        "headline": ["Manrope"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body { font-family: 'Inter', sans-serif; }
+        h1, h2, h3 { font-family: 'Manrope', sans-serif; }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface text-on-surface">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 bg-[#f7f9fb]/80 backdrop-blur-xl flex justify-between items-center px-8 py-4 w-full">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-blue-600">lens</span>
+<span class="text-xl font-black text-slate-900 tracking-tighter font-['Manrope']">APIScan</span>
+</div>
+<div class="flex items-center gap-6">
+<nav class="hidden md:flex items-center gap-8 text-sm font-semibold">
+<a class="text-slate-500 hover:bg-blue-50/50 transition-colors px-3 py-1 rounded-lg" href="#">Dashboard</a>
+<a class="text-slate-500 hover:bg-blue-50/50 transition-colors px-3 py-1 rounded-lg" href="#">Projects</a>
+<a class="text-slate-500 hover:bg-blue-50/50 transition-colors px-3 py-1 rounded-lg" href="#">Scanner</a>
+<a class="text-blue-700 font-bold px-3 py-1 rounded-lg bg-blue-50/50" href="#">Reports</a>
+</nav>
+<div class="w-10 h-10 rounded-full bg-surface-container-high flex items-center justify-center overflow-hidden">
+<img alt="User Avatar" data-alt="close-up portrait of a professional woman with a confident expression in a tech office setting with soft natural lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAlSNyp24AwGT0CiICIAjzoxN13jy3drTDZre2rSZ8imbLnkBtohlDEUTIl1jmimWo0aWE87DHZHPCOrBeij-oLTTM7OffmGIPi_44QXq5KROAFO2lw6Ele6TB35nNpj5p4YLf6BCOkdbA7lwXctLZRxT-GLXZ-zkJXB1S3m2g5Y1mGIFKyPdsnDYU2ApIm5sdb0gWVJ6xg0guGE237dWSP10sTBV4U-NQqhkux3dOFh1wNYyU0jNYlbl7H3VeO10WoIj6-f8zh8wg"/>
+</div>
+</div>
+</header>
+<!-- NavigationDrawer (Sidebar) -->
+<aside class="h-full w-64 fixed left-0 top-0 hidden md:block bg-[#f7f9fb] pt-24 px-6">
+<div class="flex flex-col gap-2">
+<a class="flex items-center gap-3 px-4 py-3 text-slate-600 hover:bg-slate-100 hover:translate-x-1 transition-transform rounded-lg" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-medium text-sm">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-slate-600 hover:bg-slate-100 hover:translate-x-1 transition-transform rounded-lg" href="#">
+<span class="material-symbols-outlined">folder_open</span>
+<span class="font-medium text-sm">Projects</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-slate-600 hover:bg-slate-100 hover:translate-x-1 transition-transform rounded-lg" href="#">
+<span class="material-symbols-outlined">troubleshoot</span>
+<span class="font-medium text-sm">Scanner</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 bg-blue-50 text-blue-700 border-l-4 border-blue-600 rounded-r-lg hover:translate-x-1 transition-transform" href="#">
+<span class="material-symbols-outlined">analytics</span>
+<span class="font-medium text-sm">Reports</span>
+</a>
+</div>
+</aside>
+<!-- Main Content Canvas -->
+<main class="md:ml-64 pt-24 pb-20 md:pb-12 px-6 md:px-12 max-w-7xl mx-auto">
+<!-- Header & Summary Section -->
+<header class="mb-10">
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-6">
+<div>
+<p class="text-xs font-bold text-primary uppercase tracking-[0.2em] mb-2 font-label">Security Audit</p>
+<h1 class="text-4xl font-extrabold text-on-surface tracking-tight leading-none mb-4">Detailed Vulnerability Report</h1>
+<p class="text-on-surface-variant max-w-xl">Deep scan results for production API endpoints. Analysis conducted via The Intelligent Lens engine.</p>
+</div>
+<!-- High-level summary card -->
+<div class="relative group">
+<div class="absolute -inset-1 bg-gradient-to-r from-error to-error-dim rounded-xl blur opacity-15 group-hover:opacity-25 transition duration-1000 group-hover:duration-200"></div>
+<div class="relative flex items-center gap-6 bg-surface-container-lowest p-6 rounded-xl shadow-sm">
+<div class="flex flex-col">
+<span class="text-4xl font-black text-error">5</span>
+<span class="text-[10px] font-bold uppercase tracking-widest text-on-surface-variant">Issues Found</span>
+</div>
+<div class="h-12 w-px bg-surface-container"></div>
+<div class="flex flex-col">
+<span class="text-xl font-bold text-on-surface">3 High</span>
+<span class="text-[10px] font-bold uppercase tracking-widest text-on-surface-variant">Risk Level</span>
+</div>
+</div>
+</div>
+</div>
+</header>
+<!-- Bento Grid Analysis -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+<!-- Hero Analysis Map (Decorative/Visual Context) -->
+<div class="lg:col-span-8 rounded-2xl overflow-hidden bg-surface-container relative min-h-[320px]">
+<img alt="Threat Visualization" class="absolute inset-0 w-full h-full object-cover opacity-60" data-alt="abstract digital visualization of data nodes connecting with glowing neon red lines on a deep dark blue grid background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBwqsT1zACVb-NdpXUPoSUJvE_r9v5VOBTQeZ_eokrrrZS2lfj6396xU7eAg8XoAsIwDPMbWCFnZoqBdVPHUDDg8LDtShNVRWNogZTcQH1P4oTFHTnr3DUIHifYMfHqG15QX8tiatrUYrO6dwaNXwtGIle3EWNtbFoZ2fK2ro3YyUK_9oZYff8DdIpALR2_5d-tg2EHkVQtEx4sLl41FT6PBg-KkN8WWCSGXdQ2dsBchd1J7cxrah6mC4cI_SXsIMl0Qs7UaPm_Qz8"/>
+<div class="absolute inset-0 bg-gradient-to-t from-surface-container via-transparent to-transparent"></div>
+<div class="absolute bottom-6 left-6 right-6 flex justify-between items-end">
+<div>
+<h2 class="text-2xl font-bold text-on-surface mb-1">Infiltration Vectors</h2>
+<p class="text-sm text-on-surface-variant">Spatial analysis of API request anomalies detected during the last 24 hours.</p>
+</div>
+<button class="bg-primary hover:bg-primary-dim text-white px-5 py-2.5 rounded-xl font-bold text-sm shadow-lg shadow-primary/20 transition-all flex items-center gap-2">
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">terminal</span>
+                        Explore Nodes
+                    </button>
+</div>
+</div>
+<!-- Risk Distribution (Small Card) -->
+<div class="lg:col-span-4 bg-surface-container p-6 rounded-2xl flex flex-col justify-between">
+<div>
+<h3 class="text-lg font-bold mb-4">Risk Severity Distribution</h3>
+<div class="flex items-end gap-2 h-32 mb-6">
+<div class="flex-1 bg-error rounded-t-lg" style="height: 100%"></div>
+<div class="flex-1 bg-tertiary-container rounded-t-lg" style="height: 40%"></div>
+<div class="flex-1 bg-primary-container rounded-t-lg" style="height: 20%"></div>
+<div class="flex-1 bg-surface-variant rounded-t-lg" style="height: 10%"></div>
+</div>
+</div>
+<div class="space-y-2">
+<div class="flex justify-between text-xs font-semibold">
+<span class="text-on-surface-variant">Critical / High</span>
+<span>60%</span>
+</div>
+<div class="w-full bg-surface-container-high h-1.5 rounded-full overflow-hidden">
+<div class="bg-error h-full w-[60%]"></div>
+</div>
+</div>
+</div>
+<!-- Detailed Risk Cards -->
+<div class="lg:col-span-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-4">
+<!-- SQL Injection Card -->
+<div class="bg-surface-container-lowest p-8 rounded-2xl transition-all hover:bg-surface-container-low group">
+<div class="flex justify-between items-start mb-6">
+<div class="w-12 h-12 bg-error-container/20 rounded-lg flex items-center justify-center text-error">
+<span class="material-symbols-outlined">database</span>
+</div>
+<span class="bg-error text-white text-[10px] font-black px-2.5 py-1 rounded-sm uppercase tracking-wider">High Risk</span>
+</div>
+<h4 class="text-xl font-bold mb-3">SQL Injection</h4>
+<p class="text-sm text-on-surface-variant leading-relaxed mb-6">Vulnerability detected in `/api/v1/users/search`. Malicious SQL statements can be executed through unsanitized user input in the `query` parameter.</p>
+<div class="flex items-center gap-2 text-xs font-bold text-primary group-hover:gap-3 transition-all cursor-pointer">
+                        VIEW REMEDIATION <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</div>
+</div>
+<!-- Broken Authentication Card -->
+<div class="bg-surface-container-lowest p-8 rounded-2xl transition-all hover:bg-surface-container-low group border-l-4 border-error">
+<div class="flex justify-between items-start mb-6">
+<div class="w-12 h-12 bg-error-container/20 rounded-lg flex items-center justify-center text-error">
+<span class="material-symbols-outlined">lock_open</span>
+</div>
+<span class="bg-error text-white text-[10px] font-black px-2.5 py-1 rounded-sm uppercase tracking-wider">High Risk</span>
+</div>
+<h4 class="text-xl font-bold mb-3">Broken Authentication</h4>
+<p class="text-sm text-on-surface-variant leading-relaxed mb-6">Session tokens are not being rotated upon privilege escalation. Attackers could potentially reuse intercepted tokens to gain admin access.</p>
+<div class="flex items-center gap-2 text-xs font-bold text-primary group-hover:gap-3 transition-all cursor-pointer">
+                        VIEW REMEDIATION <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</div>
+</div>
+<!-- Exposed Sensitive Data Card -->
+<div class="bg-surface-container-lowest p-8 rounded-2xl transition-all hover:bg-surface-container-low group">
+<div class="flex justify-between items-start mb-6">
+<div class="w-12 h-12 bg-tertiary-container/30 rounded-lg flex items-center justify-center text-tertiary">
+<span class="material-symbols-outlined">visibility</span>
+</div>
+<span class="bg-tertiary-container text-on-tertiary-container text-[10px] font-black px-2.5 py-1 rounded-sm uppercase tracking-wider">Medium Risk</span>
+</div>
+<h4 class="text-xl font-bold mb-3">Exposed Sensitive Data</h4>
+<p class="text-sm text-on-surface-variant leading-relaxed mb-6">The endpoint `/api/v1/profile` returns full PII (Personally Identifiable Information) without masking, including internal system IDs.</p>
+<div class="flex items-center gap-2 text-xs font-bold text-primary group-hover:gap-3 transition-all cursor-pointer">
+                        VIEW REMEDIATION <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- BottomNavBar (Mobile Only) -->
+<nav class="fixed bottom-0 w-full z-50 md:hidden bg-white/90 backdrop-blur-lg border-t border-slate-100 flex justify-around items-center px-4 py-3 w-full shadow-[0_-4px_20px_rgba(0,0,0,0.05)]">
+<a class="flex flex-col items-center justify-center text-slate-400" href="#">
+<span class="material-symbols-outlined">home</span>
+<span class="font-['Inter'] text-[10px] font-semibold uppercase tracking-widest mt-1">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-slate-400" href="#">
+<span class="material-symbols-outlined">folder</span>
+<span class="font-['Inter'] text-[10px] font-semibold uppercase tracking-widest mt-1">Projects</span>
+</a>
+<a class="flex flex-col items-center justify-center text-slate-400" href="#">
+<span class="material-symbols-outlined">search</span>
+<span class="font-['Inter'] text-[10px] font-semibold uppercase tracking-widest mt-1">Scan</span>
+</a>
+<a class="flex flex-col items-center justify-center text-blue-600 bg-blue-50/50 rounded-xl px-3 py-1" href="#">
+<span class="material-symbols-outlined">description</span>
+<span class="font-['Inter'] text-[10px] font-semibold uppercase tracking-widest mt-1">Reports</span>
+</a>
+</nav>
+</body></html>

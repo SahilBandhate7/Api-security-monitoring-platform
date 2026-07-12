@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>ClinicalAI Contracts - MSA Analysis</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Manrope:wght@600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "tertiary-fixed-dim": "#ffb596",
+                        "inverse-primary": "#b4c5ff",
+                        "secondary-fixed-dim": "#b4c5ff",
+                        "on-tertiary-fixed-variant": "#7d2d00",
+                        "on-secondary-fixed-variant": "#31447b",
+                        "secondary": "#495c95",
+                        "on-surface": "#0d1c2e",
+                        "surface": "#f8f9ff",
+                        "on-surface-variant": "#434655",
+                        "on-secondary": "#ffffff",
+                        "background": "#f8f9ff",
+                        "tertiary-container": "#bc4800",
+                        "on-primary-container": "#eeefff",
+                        "on-background": "#0d1c2e",
+                        "on-tertiary-fixed": "#360f00",
+                        "surface-dim": "#ccdbf3",
+                        "surface-container": "#e6eeff",
+                        "primary-container": "#2563eb",
+                        "on-secondary-container": "#394c84",
+                        "on-primary": "#ffffff",
+                        "error-container": "#ffdad6",
+                        "primary": "#004ac6",
+                        "outline": "#737686",
+                        "inverse-surface": "#233144",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-container-highest": "#d5e3fc",
+                        "surface-container-high": "#dce9ff",
+                        "on-error": "#ffffff",
+                        "secondary-fixed": "#dbe1ff",
+                        "on-secondary-fixed": "#00174b",
+                        "on-primary-fixed-variant": "#003ea8",
+                        "surface-container-low": "#eff4ff",
+                        "tertiary-fixed": "#ffdbcd",
+                        "on-tertiary": "#ffffff",
+                        "tertiary": "#943700",
+                        "primary-fixed-dim": "#b4c5ff",
+                        "on-tertiary-container": "#ffede6",
+                        "surface-tint": "#0053db",
+                        "error": "#ba1a1a",
+                        "outline-variant": "#c3c6d7",
+                        "on-primary-fixed": "#00174b",
+                        "surface-variant": "#d5e3fc",
+                        "primary-fixed": "#dbe1ff",
+                        "inverse-on-surface": "#eaf1ff",
+                        "on-error-container": "#93000a",
+                        "surface-bright": "#f8f9ff",
+                        "secondary-container": "#acbfff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "fontFamily": {
+                        "headline": ["Manrope"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body { font-family: 'Inter', sans-serif; }
+        h1, h2, h3, .headline { font-family: 'Manrope', sans-serif; }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface min-h-screen pb-24 md:pb-0 pt-16">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 flex justify-between items-center px-6 h-16 bg-[#f8f9ff] dark:bg-[#0d1c2e]">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-primary-container flex items-center justify-center overflow-hidden">
+<img alt="Profile" class="w-full h-full object-cover" data-alt="Professional headshot of a legal analyst in a modern office, clean lighting, blurred business background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAW_bVqPCD1poNa8Wbabef-g19LZEE_b0lMymyCTpiHsbeDKYmklbV4x5mzGsf7QV-pyRrF8sjWACsVVNi0wWQYNuHs855E8BAc_dx6VI3yQ0ILay1amNZJOBAFKzzZX0beBHKusAKl3js0ve7-gbFebUD_NupHjNKRCS16WqFth7k06Z3aX2KOVWm53P-PbnFehANQDDhlbJzEm5Znz3bbc0r9NZoY72i1K8iEft0-pc0rE7yIorC0CiZWGP5H0eZxm5b8n49WTQo"/>
+</div>
+<span class="font-['Manrope'] font-semibold text-lg text-[#0d1c2e] dark:text-[#f8f9ff]">ClinicalAI Contracts</span>
+</div>
+<button class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-[#dce9ff]/50 dark:hover:bg-[#2563eb]/20 transition-colors active:scale-95 duration-150">
+<span class="material-symbols-outlined text-[#434655] dark:text-[#c3c6d7]" data-icon="notifications">notifications</span>
+</button>
+</header>
+<main class="max-w-7xl mx-auto px-6 py-8">
+<!-- Breadcrumbs & Header -->
+<div class="mb-8">
+<div class="flex items-center gap-2 text-on-surface-variant text-sm mb-2 font-medium">
+<span>Contracts</span>
+<span class="material-symbols-outlined text-xs">chevron_right</span>
+<span class="text-primary">MSA - BioGenix Labs</span>
+</div>
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-4">
+<div>
+<h1 class="text-4xl font-extrabold tracking-tight text-on-surface">MSA - BioGenix Labs</h1>
+<p class="text-on-surface-variant mt-1">Last analyzed on Oct 24, 2023 • Version 2.4.1</p>
+</div>
+<div class="flex gap-3">
+<button class="px-5 py-2.5 rounded-lg bg-surface-container-highest text-on-primary-fixed-variant font-semibold text-sm hover:underline transition-all">
+                        Export PDF
+                    </button>
+<button class="px-5 py-2.5 rounded-lg bg-gradient-to-br from-primary to-primary-container text-white font-semibold text-sm shadow-sm active:scale-95 transition-transform">
+                        Share Analysis
+                    </button>
+</div>
+</div>
+</div>
+<!-- Bento Grid Analysis Dashboard -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-6">
+<!-- Executive Summary (Bento Large) -->
+<div class="md:col-span-8 bg-surface-container-low rounded-xl p-8 flex flex-col justify-between">
+<div>
+<div class="flex items-center gap-2 mb-6">
+<span class="material-symbols-outlined text-primary" data-icon="description">description</span>
+<h2 class="text-xl font-bold">Executive Summary</h2>
+</div>
+<p class="text-on-surface-variant leading-relaxed text-lg max-w-2xl">
+                        The Master Service Agreement with BioGenix Labs exhibits standard clinical research terminology but contains several <span class="text-error font-semibold">high-risk liability shifts</span> in Section 14 (Indemnification). AI Confidence is exceptionally high for clinical compliance flagging.
+                    </p>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-3 gap-6 mt-10">
+<div class="bg-surface-container-lowest p-5 rounded-lg">
+<span class="text-xs font-bold uppercase tracking-widest text-on-surface-variant opacity-70">Total Clauses</span>
+<div class="text-3xl font-extrabold mt-1">142</div>
+</div>
+<div class="bg-surface-container-lowest p-5 rounded-lg">
+<span class="text-xs font-bold uppercase tracking-widest text-on-surface-variant opacity-70">Key Risks</span>
+<div class="text-3xl font-extrabold mt-1 text-error">08</div>
+</div>
+<div class="bg-surface-container-lowest p-5 rounded-lg border-2 border-primary/10">
+<span class="text-xs font-bold uppercase tracking-widest text-on-surface-variant opacity-70">Compliance</span>
+<div class="text-3xl font-extrabold mt-1 text-primary">92%</div>
+</div>
+</div>
+</div>
+<!-- Confidence Score (Bento Small) -->
+<div class="md:col-span-4 bg-surface-container-lowest rounded-xl p-8 flex flex-col items-center justify-center text-center border-2 border-primary/5">
+<div class="relative w-40 h-40 flex items-center justify-center mb-6">
+<svg class="w-full h-full -rotate-90">
+<circle class="text-surface-container-high" cx="80" cy="80" fill="transparent" r="70" stroke="currentColor" stroke-width="8"></circle>
+<circle class="text-primary" cx="80" cy="80" fill="transparent" r="70" stroke="currentColor" stroke-dasharray="440" stroke-dashoffset="7" stroke-width="8"></circle>
+</svg>
+<div class="absolute inset-0 flex flex-col items-center justify-center">
+<span class="text-3xl font-extrabold text-on-surface">98.4%</span>
+<span class="text-[10px] font-bold text-on-surface-variant tracking-tighter uppercase">Confidence</span>
+</div>
+</div>
+<h3 class="font-bold text-lg mb-2">High Precision Analysis</h3>
+<p class="text-sm text-on-surface-variant">Machine learning verification confirms extraction accuracy across 427 data points.</p>
+</div>
+<!-- Risk Distribution (Bento Medium) -->
+<div class="md:col-span-4 bg-surface-container-lowest rounded-xl p-6 border-2 border-primary/5">
+<h3 class="font-bold mb-4">Risk Distribution</h3>
+<div class="space-y-4">
+<div>
+<div class="flex justify-between text-xs font-bold mb-1">
+<span>High Risk</span>
+<span class="text-error">3 Critical</span>
+</div>
+<div class="h-2 bg-surface-container-low rounded-full overflow-hidden">
+<div class="h-full bg-error w-[30%]"></div>
+</div>
+</div>
+<div>
+<div class="flex justify-between text-xs font-bold mb-1">
+<span>Medium Risk</span>
+<span class="text-tertiary">12 Warnings</span>
+</div>
+<div class="h-2 bg-surface-container-low rounded-full overflow-hidden">
+<div class="h-full bg-tertiary w-[55%]"></div>
+</div>
+</div>
+<div>
+<div class="flex justify-between text-xs font-bold mb-1">
+<span>Low Risk</span>
+<span class="text-primary">27 Minor</span>
+</div>
+<div class="h-2 bg-surface-container-low rounded-full overflow-hidden">
+<div class="h-full bg-primary w-[85%]"></div>
+</div>
+</div>
+</div>
+</div>
+<!-- Extracted Clauses List (Bento Large Expandable) -->
+<div class="md:col-span-8 bg-white rounded-xl overflow-hidden shadow-sm">
+<div class="px-6 py-4 flex justify-between items-center border-b border-outline-variant/10">
+<h3 class="font-bold text-lg">Extracted Clauses</h3>
+<div class="flex items-center gap-4">
+<button class="text-primary text-sm font-semibold flex items-center gap-1">
+<span class="material-symbols-outlined text-sm">filter_list</span> Filter
+                        </button>
+</div>
+</div>
+<div class="divide-y divide-outline-variant/5">
+<!-- Clause Item -->
+<div class="p-6 hover:bg-surface-container-low transition-colors group cursor-pointer">
+<div class="flex justify-between items-start mb-3">
+<div class="flex items-center gap-3">
+<span class="bg-error-container text-on-error-container px-2 py-0.5 rounded text-[10px] font-bold uppercase tracking-wider">High Risk</span>
+<span class="font-bold text-on-surface">14.2 Mutual Indemnification</span>
+</div>
+<span class="text-xs text-on-surface-variant font-medium">99.1% match</span>
+</div>
+<p class="text-sm text-on-surface-variant line-clamp-2 italic mb-3">
+                            "Provider shall indemnify, defend and hold harmless Sponsor and its Affiliates from any and all third party claims arising out of Provider's gross negligence..."
+                        </p>
+<div class="flex justify-between items-center">
+<span class="text-xs font-semibold text-error">Critical: Asymmetric liability detected.</span>
+<span class="material-symbols-outlined text-primary opacity-0 group-hover:opacity-100 transition-opacity" data-icon="chevron_right">chevron_right</span>
+</div>
+</div>
+<!-- Clause Item -->
+<div class="p-6 hover:bg-surface-container-low transition-colors group cursor-pointer">
+<div class="flex justify-between items-start mb-3">
+<div class="flex items-center gap-3">
+<span class="bg-tertiary-fixed text-tertiary px-2 py-0.5 rounded text-[10px] font-bold uppercase tracking-wider">Medium Risk</span>
+<span class="font-bold text-on-surface">8.4 Data Retention Period</span>
+</div>
+<span class="text-xs text-on-surface-variant font-medium">96.4% match</span>
+</div>
+<p class="text-sm text-on-surface-variant line-clamp-2 italic mb-3">
+                            "Clinical data shall be retained for a period of no less than seven (7) years following the completion of the Study, unless otherwise required by law..."
+                        </p>
+<div class="flex justify-between items-center">
+<span class="text-xs font-semibold text-tertiary">Warning: Conflicts with GDPR Art. 5(e).</span>
+<span class="material-symbols-outlined text-primary opacity-0 group-hover:opacity-100 transition-opacity" data-icon="chevron_right">chevron_right</span>
+</div>
+</div>
+<!-- Clause Item -->
+<div class="p-6 hover:bg-surface-container-low transition-colors group cursor-pointer">
+<div class="flex justify-between items-start mb-3">
+<div class="flex items-center gap-3">
+<span class="bg-surface-container-high text-primary px-2 py-0.5 rounded text-[10px] font-bold uppercase tracking-wider">Low Risk</span>
+<span class="font-bold text-on-surface">22.1 Governing Law</span>
+</div>
+<span class="text-xs text-on-surface-variant font-medium">99.9% match</span>
+</div>
+<p class="text-sm text-on-surface-variant line-clamp-2 italic mb-3">
+                            "This Agreement shall be governed by and construed in accordance with the laws of the State of Delaware, without regard to conflict of law principles."
+                        </p>
+<div class="flex justify-between items-center">
+<span class="text-xs font-semibold text-primary">Standard: Complies with enterprise policy.</span>
+<span class="material-symbols-outlined text-primary opacity-0 group-hover:opacity-100 transition-opacity" data-icon="chevron_right">chevron_right</span>
+</div>
+</div>
+</div>
+<div class="p-4 bg-surface-container-low/30 text-center">
+<button class="text-sm font-bold text-primary hover:underline">View All 142 Clauses</button>
+</div>
+</div>
+<!-- Side Actions -->
+<div class="md:col-span-4 flex flex-col gap-4">
+<div class="bg-primary p-6 rounded-xl text-white relative overflow-hidden group">
+<div class="relative z-10">
+<h4 class="font-bold text-lg mb-2">Deep Compliance Report</h4>
+<p class="text-sm text-white/80 mb-4">Generate a full regulatory alignment map for FDA/EMA standards.</p>
+<button class="bg-white text-primary px-4 py-2 rounded-lg text-sm font-bold flex items-center gap-2 group-hover:translate-x-1 transition-transform">
+                            Run Full Audit <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</button>
+</div>
+<div class="absolute -right-4 -bottom-4 opacity-10 scale-150 rotate-12">
+<span class="material-symbols-outlined text-9xl">analytics</span>
+</div>
+</div>
+<div class="bg-surface-container-lowest p-6 rounded-xl border-2 border-primary/5">
+<h4 class="font-bold mb-3 text-sm flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-sm">history</span> History
+                    </h4>
+<ul class="space-y-4">
+<li class="flex items-start gap-3">
+<div class="w-2 h-2 rounded-full bg-primary mt-1.5"></div>
+<div>
+<p class="text-xs font-bold text-on-surface">V2.4.1 Analyzed</p>
+<p class="text-[10px] text-on-surface-variant">Oct 24, 2023 • 09:12 AM</p>
+</div>
+</li>
+<li class="flex items-start gap-3">
+<div class="w-2 h-2 rounded-full bg-outline-variant mt-1.5"></div>
+<div>
+<p class="text-xs font-bold text-on-surface">Upload Successful</p>
+<p class="text-[10px] text-on-surface-variant">Oct 23, 2023 • 11:45 PM</p>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</main>
+<!-- BottomNavBar (Mobile Only) -->
+<nav class="fixed bottom-0 w-full z-50 flex justify-around items-center px-4 py-3 pb-safe bg-white/80 dark:bg-[#0d1c2e]/80 backdrop-blur-xl border-t border-[#c3c6d7]/15 shadow-[0px_-4px_16px_rgba(13,28,46,0.04)] md:hidden">
+<button class="flex flex-col items-center justify-center text-[#434655] dark:text-[#c3c6d7] hover:text-[#004ac6] dark:hover:text-[#2563eb] active:scale-90 transition-transform">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="font-['Inter'] text-[11px] font-medium">Dashboard</span>
+</button>
+<button class="flex flex-col items-center justify-center text-[#434655] dark:text-[#c3c6d7] hover:text-[#004ac6] dark:hover:text-[#2563eb] active:scale-90 transition-transform">
+<span class="material-symbols-outlined" data-icon="upload_file">upload_file</span>
+<span class="font-['Inter'] text-[11px] font-medium">Upload</span>
+</button>
+<button class="flex flex-col items-center justify-center text-[#004ac6] dark:text-[#2563eb] font-bold active:scale-90 transition-transform">
+<span class="material-symbols-outlined" data-icon="description" style="font-variation-settings: 'FILL' 1;">description</span>
+<span class="font-['Inter'] text-[11px] font-medium">Reports</span>
+</button>
+<button class="flex flex-col items-center justify-center text-[#434655] dark:text-[#c3c6d7] hover:text-[#004ac6] dark:hover:text-[#2563eb] active:scale-90 transition-transform">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span class="font-['Inter'] text-[11px] font-medium">Settings</span>
+</button>
+</nav>
+<!-- Responsive Top Navigation Cluster (Desktop Only) -->
+<div class="hidden md:flex fixed left-0 top-16 bottom-0 w-64 bg-surface-container-low flex-col p-6 z-40">
+<nav class="space-y-2">
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant hover:bg-surface-container-high transition-colors font-medium" href="#">
+<span class="material-symbols-outlined">dashboard</span> Dashboard
+            </a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant hover:bg-surface-container-high transition-colors font-medium" href="#">
+<span class="material-symbols-outlined">upload_file</span> Upload
+            </a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg bg-surface-container-highest text-primary font-bold shadow-sm" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">description</span> Reports
+            </a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant hover:bg-surface-container-high transition-colors font-medium" href="#">
+<span class="material-symbols-outlined">settings</span> Settings
+            </a>
+</nav>
+<div class="mt-auto">
+<div class="p-4 bg-primary/5 rounded-xl border border-primary/10">
+<p class="text-xs font-bold text-primary mb-2 uppercase tracking-widest">Enterprise Plan</p>
+<div class="w-full bg-outline-variant/20 h-1 rounded-full mb-2">
+<div class="bg-primary h-full w-2/3 rounded-full"></div>
+</div>
+<p class="text-[10px] text-on-surface-variant">856 / 1000 Analysis credits used</p>
+</div>
+</div>
+</div>
+<!-- Main Content Layout Fix for Desktop Nav -->
+<style>
+        @media (min-width: 768px) {
+            main {
+                margin-left: 16rem;
+                padding-top: 2rem;
+            }
+        }
+    </style>
+</body></html>

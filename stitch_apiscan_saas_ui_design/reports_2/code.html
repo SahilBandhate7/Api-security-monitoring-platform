@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Reports - APIScan</title>
+<!-- Material Symbols Link -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Google Fonts: Manrope & Inter -->
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Manrope:wght@700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "secondary": "#495c95",
+                    "on-primary": "#ffffff",
+                    "surface-container-low": "#eff4ff",
+                    "inverse-on-surface": "#eaf1ff",
+                    "on-secondary-fixed": "#00174b",
+                    "on-tertiary-fixed": "#360f00",
+                    "surface-variant": "#d5e3fc",
+                    "primary-fixed-dim": "#b4c5ff",
+                    "on-surface-variant": "#434655",
+                    "tertiary-fixed-dim": "#ffb596",
+                    "primary-container": "#2563eb",
+                    "on-secondary-fixed-variant": "#31447b",
+                    "on-tertiary-container": "#ffede6",
+                    "surface-dim": "#ccdbf3",
+                    "outline": "#737686",
+                    "on-tertiary-fixed-variant": "#7d2d00",
+                    "surface-bright": "#f8f9ff",
+                    "inverse-primary": "#b4c5ff",
+                    "secondary-fixed-dim": "#b4c5ff",
+                    "error": "#ba1a1a",
+                    "outline-variant": "#c3c6d7",
+                    "surface": "#f8f9ff",
+                    "tertiary": "#943700",
+                    "primary-fixed": "#dbe1ff",
+                    "on-primary-fixed-variant": "#003ea8",
+                    "tertiary-fixed": "#ffdbcd",
+                    "surface-tint": "#0053db",
+                    "on-surface": "#0d1c2e",
+                    "secondary-fixed": "#dbe1ff",
+                    "background": "#f8f9ff",
+                    "surface-container": "#e6eeff",
+                    "on-primary-fixed": "#00174b",
+                    "on-primary-container": "#eeefff",
+                    "on-background": "#0d1c2e",
+                    "on-error": "#ffffff",
+                    "on-tertiary": "#ffffff",
+                    "tertiary-container": "#bc4800",
+                    "surface-container-high": "#dce9ff",
+                    "error-container": "#ffdad6",
+                    "primary": "#004ac6",
+                    "surface-container-lowest": "#ffffff",
+                    "secondary-container": "#acbfff",
+                    "surface-container-highest": "#d5e3fc",
+                    "on-secondary": "#ffffff",
+                    "inverse-surface": "#233144",
+                    "on-secondary-container": "#394c84",
+                    "on-error-container": "#93000a"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "1rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "fontFamily": {
+                    "headline": ["Manrope"],
+                    "body": ["Inter"],
+                    "label": ["Inter"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body { font-family: 'Inter', sans-serif; }
+        h1, h2, h3, .headline { font-family: 'Manrope', sans-serif; }
+        .clinical-shadow { box-shadow: 0px 12px 32px rgba(13, 28, 46, 0.04); }
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(24px);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background min-h-screen">
+<!-- NavigationDrawer -->
+<aside class="h-screen w-64 left-0 top-0 fixed bg-[#eff4ff] dark:bg-slate-900 flex flex-col gap-2 p-6 z-50">
+<div class="mb-8 px-2">
+<span class="font-['Manrope'] font-extrabold text-[#0d1c2e] dark:text-white text-2xl tracking-tight">APIScan</span>
+</div>
+<nav class="flex flex-col gap-1">
+<a class="flex items-center gap-3 px-4 py-3 text-[#434655] dark:text-slate-400 hover:text-[#004ac6] hover:bg-[#dce9ff] dark:hover:bg-slate-800 transition-all font-['Inter'] text-sm font-medium" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+                Dashboard
+            </a>
+<a class="flex items-center gap-3 px-4 py-3 text-[#434655] dark:text-slate-400 hover:text-[#004ac6] hover:bg-[#dce9ff] dark:hover:bg-slate-800 transition-all font-['Inter'] text-sm font-medium" href="#">
+<span class="material-symbols-outlined" data-icon="folder_open">folder_open</span>
+                Projects
+            </a>
+<a class="flex items-center gap-3 px-4 py-3 text-[#434655] dark:text-slate-400 hover:text-[#004ac6] hover:bg-[#dce9ff] dark:hover:bg-slate-800 transition-all font-['Inter'] text-sm font-medium" href="#">
+<span class="material-symbols-outlined" data-icon="radar">radar</span>
+                Scanner
+            </a>
+<!-- Active Navigation: Reports -->
+<a class="flex items-center gap-3 px-4 py-3 bg-white dark:bg-slate-800 text-[#004ac6] font-bold rounded-lg shadow-sm font-['Inter'] text-sm" href="#">
+<span class="material-symbols-outlined" data-icon="analytics">analytics</span>
+                Reports
+            </a>
+<a class="flex items-center gap-3 px-4 py-3 text-[#434655] dark:text-slate-400 hover:text-[#004ac6] hover:bg-[#dce9ff] dark:hover:bg-slate-800 transition-all font-['Inter'] text-sm font-medium" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+                Settings
+            </a>
+</nav>
+</aside>
+<main class="ml-64 min-h-screen">
+<!-- TopAppBar -->
+<header class="w-full top-0 sticky bg-[#f8f9ff] dark:bg-slate-950 flex justify-between items-center px-8 py-4 z-40">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-primary cursor-pointer" data-icon="search">search</span>
+<h1 class="font-['Manrope'] font-bold text-lg tracking-tight text-[#0d1c2e] dark:text-slate-100">Reports Overview</h1>
+</div>
+<div class="flex items-center gap-4">
+<button class="bg-gradient-to-br from-primary to-primary-container text-white px-6 py-2 rounded-lg font-medium text-sm flex items-center gap-2">
+<span class="material-symbols-outlined text-sm" data-icon="download">download</span>
+                    Export PDF
+                </button>
+<div class="h-10 w-10 rounded-full bg-surface-variant overflow-hidden border-2 border-white">
+<img alt="User Profile" data-alt="close-up portrait of a professional technology expert with short dark hair wearing modern glasses in a bright office environment" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCcfoq30hVYnP-zNyDIctunEC7YKkPQdncfmuvpMazSsVlg8sGz2SRVp3tYk9WCVlBrB9xSaDFxQgsknLkUV7pnIN5s1Eo3efY7qlxtKwNo18EYn95_61OQ234zs85M62vmL9b9iCn41p39mUuHmP-AvDjmPYj3baaDEbcY8ID8GnKZyDRrF8-ZQmprlvwvYl0_a4De3L4vUspnfNFpBJa_bK_jOLZQTGsia5Z6aPyn-BSTxpL4L3yHc8NFJtFzYNNQWf8_Bp6nwhQ"/>
+</div>
+</div>
+</header>
+<!-- Content Canvas -->
+<div class="p-8 max-w-7xl mx-auto space-y-8">
+<!-- Summary Bento Grid -->
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+<!-- Main Summary Card -->
+<div class="lg:col-span-2 bg-surface-container-lowest rounded-lg p-8 clinical-shadow flex items-center justify-between">
+<div>
+<span class="text-on-surface-variant font-medium text-sm mb-2 block">Security Pulse</span>
+<h2 class="text-4xl font-extrabold text-on-surface mb-1">5 Issues Found</h2>
+<p class="text-on-surface-variant">API Endpoint: <span class="text-primary font-mono text-xs">/v2/user/auth</span></p>
+</div>
+<div class="relative h-24 w-24">
+<svg class="h-full w-full" viewbox="0 0 36 36">
+<path class="text-surface-container-high" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="currentColor" stroke-dasharray="100, 100" stroke-width="3"></path>
+<path class="text-primary" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="currentColor" stroke-dasharray="75, 100" stroke-linecap="round" stroke-width="3"></path>
+</svg>
+<div class="absolute inset-0 flex items-center justify-center">
+<span class="font-bold text-lg text-on-surface">75%</span>
+</div>
+</div>
+</div>
+<!-- Fast Metrics Card -->
+<div class="bg-surface-container-low rounded-lg p-6 flex flex-col justify-between">
+<div class="flex justify-between items-start">
+<span class="material-symbols-outlined text-primary" data-icon="timer">timer</span>
+<span class="text-[10px] uppercase tracking-widest font-bold text-primary bg-white px-2 py-1 rounded">Last Scan</span>
+</div>
+<div>
+<span class="block text-sm text-on-surface-variant mb-1">Duration</span>
+<span class="text-2xl font-bold text-on-surface">14m 22s</span>
+</div>
+</div>
+</div>
+<!-- Vulnerability List Section -->
+<section class="space-y-4">
+<div class="flex items-center justify-between px-2">
+<h3 class="text-xl font-bold text-on-surface">Identified Risks</h3>
+<div class="flex gap-2">
+<span class="text-xs px-3 py-1 bg-surface-container rounded-full text-on-surface-variant font-medium">All Endpoints</span>
+<span class="text-xs px-3 py-1 bg-surface-container rounded-full text-on-surface-variant font-medium">Sorted by Severity</span>
+</div>
+</div>
+<!-- Risk Rows -->
+<div class="space-y-3">
+<!-- SQL Injection (High) -->
+<div class="group bg-surface-container-lowest p-5 rounded-lg flex items-center justify-between transition-all hover:bg-surface-container-high border border-transparent hover:border-outline-variant/10">
+<div class="flex items-center gap-6">
+<div class="h-12 w-12 rounded-lg bg-error-container flex items-center justify-center text-on-error-container">
+<span class="material-symbols-outlined" data-icon="security_update_warning" data-weight="fill" style="font-variation-settings: 'FILL' 1;">security_update_warning</span>
+</div>
+<div>
+<h4 class="font-bold text-on-surface">SQL Injection</h4>
+<span class="text-xs font-mono text-on-surface-variant">ID: CVE-2024-1029</span>
+</div>
+</div>
+<div class="flex items-center gap-8">
+<div class="hidden md:block text-right">
+<span class="text-xs text-on-surface-variant block">Impact</span>
+<span class="text-sm font-medium text-on-surface">Database Compromise</span>
+</div>
+<span class="bg-error-container text-on-error-container px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider">High Risk</span>
+<span class="material-symbols-outlined text-on-surface-variant opacity-0 group-hover:opacity-100 transition-opacity" data-icon="chevron_right">chevron_right</span>
+</div>
+</div>
+<!-- XSS (Medium) -->
+<div class="group bg-surface-container-lowest p-5 rounded-lg flex items-center justify-between transition-all hover:bg-surface-container-high border border-transparent hover:border-outline-variant/10">
+<div class="flex items-center gap-6">
+<div class="h-12 w-12 rounded-lg bg-tertiary-fixed flex items-center justify-center text-tertiary">
+<span class="material-symbols-outlined" data-icon="code" data-weight="fill" style="font-variation-settings: 'FILL' 1;">code</span>
+</div>
+<div>
+<h4 class="font-bold text-on-surface">Cross-Site Scripting (XSS)</h4>
+<span class="text-xs font-mono text-on-surface-variant">ID: CWE-79</span>
+</div>
+</div>
+<div class="flex items-center gap-8">
+<div class="hidden md:block text-right">
+<span class="text-xs text-on-surface-variant block">Impact</span>
+<span class="text-sm font-medium text-on-surface">Session Hijacking</span>
+</div>
+<span class="bg-tertiary-fixed text-tertiary px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider">Medium Risk</span>
+<span class="material-symbols-outlined text-on-surface-variant opacity-0 group-hover:opacity-100 transition-opacity" data-icon="chevron_right">chevron_right</span>
+</div>
+</div>
+<!-- Exposed Header (Low) -->
+<div class="group bg-surface-container-lowest p-5 rounded-lg flex items-center justify-between transition-all hover:bg-surface-container-high border border-transparent hover:border-outline-variant/10">
+<div class="flex items-center gap-6">
+<div class="h-12 w-12 rounded-lg bg-surface-container-high flex items-center justify-center text-primary">
+<span class="material-symbols-outlined" data-icon="info" data-weight="fill" style="font-variation-settings: 'FILL' 1;">info</span>
+</div>
+<div>
+<h4 class="font-bold text-on-surface">Exposed Information Header</h4>
+<span class="text-xs font-mono text-on-surface-variant">ID: OWASP-A5</span>
+</div>
+</div>
+<div class="flex items-center gap-8">
+<div class="hidden md:block text-right">
+<span class="text-xs text-on-surface-variant block">Impact</span>
+<span class="text-sm font-medium text-on-surface">Information Leakage</span>
+</div>
+<span class="bg-surface-container-high text-primary px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider">Low Risk</span>
+<span class="material-symbols-outlined text-on-surface-variant opacity-0 group-hover:opacity-100 transition-opacity" data-icon="chevron_right">chevron_right</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Detailed Analysis Card -->
+<section class="grid grid-cols-1 lg:grid-cols-3 gap-8 pt-8">
+<div class="lg:col-span-2 space-y-6">
+<div class="bg-surface-container-lowest rounded-lg p-8 clinical-shadow border-l-4 border-error">
+<div class="flex justify-between items-start mb-6">
+<div>
+<span class="text-xs font-bold text-error uppercase tracking-widest mb-1 block">Detailed Findings</span>
+<h3 class="text-2xl font-extrabold text-on-surface">SQL Injection on /api/v1/search</h3>
+</div>
+<span class="material-symbols-outlined text-outline" data-icon="more_vert">more_vert</span>
+</div>
+<div class="prose prose-slate max-w-none text-on-surface-variant">
+<p class="mb-4 text-sm leading-relaxed">The application's search endpoint was found to be vulnerable to blind SQL injection. Input sanitization is missing on the 'query' parameter, allowing an attacker to manipulate backend SQL queries and potentially leak sensitive database structure or data.</p>
+<div class="bg-surface-container-low p-4 rounded-lg font-mono text-xs text-on-surface border border-outline-variant/10 mb-6">
+<span class="text-error font-bold">GET</span> /api/v1/search?query=admin'--
+                                <br/>
+<span class="text-primary">Response:</span> 500 Internal Server Error (Database driver error)
+                            </div>
+<h5 class="text-on-surface font-bold text-sm mb-2">Recommended Remediation</h5>
+<ul class="list-disc pl-5 text-sm space-y-1">
+<li>Implement prepared statements with parameterized queries.</li>
+<li>Use a robust input validation library to sanitize user strings.</li>
+<li>Enable a Web Application Firewall (WAF) to detect injection patterns.</li>
+</ul>
+</div>
+</div>
+</div>
+<!-- Remediation Sidebar -->
+<div class="space-y-6">
+<div class="bg-on-surface text-white rounded-lg p-6 flex flex-col justify-between relative overflow-hidden">
+<div class="absolute -right-4 -top-4 opacity-10">
+<span class="material-symbols-outlined text-9xl" data-icon="security">security</span>
+</div>
+<h4 class="text-lg font-bold mb-4 relative z-10">Compliance Status</h4>
+<div class="space-y-4 relative z-10">
+<div class="flex items-center justify-between">
+<span class="text-sm opacity-70">PCI-DSS</span>
+<span class="text-xs font-bold text-error">FAILED</span>
+</div>
+<div class="h-1.5 w-full bg-white/10 rounded-full">
+<div class="h-full w-1/3 bg-error rounded-full"></div>
+</div>
+<div class="flex items-center justify-between pt-2">
+<span class="text-sm opacity-70">SOC2 Type II</span>
+<span class="text-xs font-bold text-tertiary">PENDING</span>
+</div>
+<div class="h-1.5 w-full bg-white/10 rounded-full">
+<div class="h-full w-2/3 bg-tertiary rounded-full"></div>
+</div>
+</div>
+<button class="mt-8 w-full py-3 bg-white/10 hover:bg-white/20 rounded-lg text-sm font-bold transition-colors">
+                            View Full Compliance Map
+                        </button>
+</div>
+<!-- Scan History Micro-Card -->
+<div class="bg-surface-container-low rounded-lg p-6">
+<h4 class="text-sm font-bold text-on-surface mb-4">Previous Result Trends</h4>
+<div class="flex items-end gap-1 h-24">
+<div class="w-full bg-primary/20 rounded-t h-1/2"></div>
+<div class="w-full bg-primary/20 rounded-t h-3/4"></div>
+<div class="w-full bg-primary/20 rounded-t h-2/3"></div>
+<div class="w-full bg-primary/20 rounded-t h-1/2"></div>
+<div class="w-full bg-primary rounded-t h-full"></div>
+</div>
+<p class="text-[10px] text-center mt-3 text-on-surface-variant font-medium">Risk score increased by 12% since Tuesday</p>
+</div>
+</div>
+</section>
+</div>
+</main>
+</body></html>

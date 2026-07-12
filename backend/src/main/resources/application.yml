@@ -1,0 +1,191 @@
+spring:
+  application:
+    name: apiscan-backend
+
+  # ========================
+  # Database (PostgreSQL)
+  # ========================
+  datasource:
+    url: ${DATABASE_URL:jdbc:postgresql://localhost:5432/apiscan_db}
+    username: ${SPRING_DATASOURCE_USERNAME:apiscan}
+    password: ${SPRING_DATASOURCE_PASSWORD:apiscan123}
+    driver-class-name: org.postgresql.Driver
+    hikari:
+      maximum-pool-size: 10
+      minimum-idle: 2
+      connection-timeout: 30000
+      idle-timeout: 600000
+      max-lifetime: 1800000
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: false
+    open-in-view: false
+    properties:
+      hibernate:
+        format_sql: true
+        default_schema: public
+        jdbc:
+          time_zone: UTC
+
+  # ========================
+  # Flyway Migrations
+  # ========================
+  flyway:
+    enabled: false
+    locations: classpath:db/migration
+    baseline-on-migrate: true
+
+  # ========================
+  # Redis
+  # ========================
+  data:
+    redis:
+      enabled: true
+      url: ${REDIS_URL:redis://localhost:6379}
+      timeout: 2000ms
+      lettuce:
+        pool:
+          max-active: 8
+          max-idle: 8
+          min-idle: 2
+
+  # ========================
+  # RabbitMQ
+  # ========================
+  rabbitmq:
+    host: ${RABBITMQ_HOST:localhost}
+    port: ${RABBITMQ_PORT:5672}
+    username: ${RABBITMQ_USER:apiscan}
+    password: ${RABBITMQ_PASSWORD:apiscan123}
+    virtual-host: /
+
+    listener:
+      simple:
+        auto-startup: true
+
+  # ========================
+  # Jackson
+  # ========================
+  jackson:
+    default-property-inclusion: non_null
+    serialization:
+      write-dates-as-timestamps: false
+    deserialization:
+      fail-on-unknown-properties: false
+
+  # ========================
+  # Email (AWS SES / SMTP)
+  # ========================
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: your_email@gmail.com
+    password: your_app_password   # NOT your real password
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+
+  # ========================
+  # Virtual Threads (Java 21)
+  # ========================
+  threads:
+    virtual:
+      enabled: true
+
+# ============================
+# Server
+# ============================
+server:
+  port: ${SERVER_PORT:8080}
+  compression:
+    enabled: true
+    mime-types: application/json,application/xml,text/html,text/plain
+    min-response-size: 1024
+  error:
+    include-message: never
+    include-stacktrace: never
+
+# ============================
+# JWT Configuration
+# ============================
+jwt:
+  access-secret: ${JWT_ACCESS_SECRET:dev-access-secret-must-be-at-least-64-characters-long-for-hmac-sha256-signing}
+  refresh-secret: ${JWT_REFRESH_SECRET:dev-refresh-secret-must-be-at-least-64-characters-long-for-hmac-sha256-signing}
+  access-expiry-minutes: ${JWT_ACCESS_EXPIRY_MINUTES:15}
+  refresh-expiry-days: ${JWT_REFRESH_EXPIRY_DAYS:7}
+
+# ============================
+# Stripe Billing
+# ============================
+stripe:
+  secret-key: ${STRIPE_SECRET_KEY:}
+  webhook-secret: ${STRIPE_WEBHOOK_SECRET:}
+  pro-price-id: ${STRIPE_PRO_PRICE_ID:}
+  enterprise-price-id: ${STRIPE_ENTERPRISE_PRICE_ID:}
+
+# ============================
+# RabbitMQ Queue Names
+# ============================
+rabbitmq:
+  scan-queue: scan.queue
+
+# ============================
+# Application Settings
+# ============================
+app:
+  frontend-url: ${FRONTEND_URL:http://localhost:3000}
+  cors:
+    allowed-origins: ${CORS_ALLOWED_ORIGINS:http://localhost:3000}
+
+# ============================
+# Sentry Error Tracking
+# ============================
+sentry:
+  dsn: ${SENTRY_DSN:}
+  traces-sample-rate: 0.2
+  environment: ${SPRING_PROFILES_ACTIVE:dev}
+
+# ============================
+# Actuator + Prometheus
+# ============================
+management:
+  health:
+    redis:
+      enabled: true
+    rabbit:
+      enabled: true
+    mail:
+      enabled: false
+  endpoints:
+    web:
+      exposure:
+        include: health,info,prometheus,metrics
+      base-path: /actuator
+  endpoint:
+    health:
+      show-details: always
+  metrics:
+    export:
+      prometheus:
+        enabled: true
+    tags:
+      application: ${spring.application.name}
+
+# ============================
+# Logging
+# ============================
+logging:
+  level:
+    root: INFO
+    com.apiscan: INFO
+    org.springframework.security: INFO
+    org.hibernate.SQL: WARN
+    org.flywaydb: INFO
+
+profiles:
+    active: dev
