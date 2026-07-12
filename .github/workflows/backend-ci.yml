@@ -1,24 +1,22 @@
-name: Backend CI/CD
+name: Backend CI
 
 on:
   push:
     branches: [main, develop]
-    paths: ["backend/**"]
+    paths:
+      - "backend/**"
   pull_request:
     branches: [main]
-    paths: ["backend/**"]
+    paths:
+      - "backend/**"
 
 env:
   JAVA_VERSION: "21"
-  ECR_REGISTRY: ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.ap-south-1.amazonaws.com
-  IMAGE_NAME: apiscan-backend
 
 jobs:
-  # ================================
-  # Test
-  # ================================
   test:
     runs-on: ubuntu-latest
+
     services:
       postgres:
         image: postgres:15-alpine
@@ -26,15 +24,18 @@ jobs:
           POSTGRES_USER: test
           POSTGRES_PASSWORD: test
           POSTGRES_DB: test_db
-        ports: ["5432:5432"]
+        ports:
+          - 5432:5432
         options: >-
           --health-cmd pg_isready
           --health-interval 10s
           --health-timeout 5s
           --health-retries 5
+
       redis:
         image: redis:7-alpine
-        ports: ["6379:6379"]
+        ports:
+          - 6379:6379
         options: >-
           --health-cmd "redis-cli ping"
           --health-interval 10s
@@ -42,18 +43,18 @@ jobs:
           --health-retries 5
 
     steps:
-      - name: Checkout code
+      - name: Checkout Repository
         uses: actions/checkout@v4
 
-      - name: Set up Java ${{ env.JAVA_VERSION }}
+      - name: Set up Java
         uses: actions/setup-java@v4
         with:
+          distribution: temurin
           java-version: ${{ env.JAVA_VERSION }}
-          distribution: "temurin"
           cache: maven
 
-      - name: Run Tests
-        working-directory: ./backend
+      - name: Run Maven Tests
+        working-directory: backend
         run: mvn verify --batch-mode --no-transfer-progress
         env:
           DATABASE_URL: jdbc:postgresql://localhost:5432/test_db
@@ -67,47 +68,9 @@ jobs:
           JWT_REFRESH_SECRET: ci-test-refresh-secret-must-be-at-least-64-characters-long-for-hmac-sha256
           SPRING_PROFILES_ACTIVE: dev
 
-      - name: Upload test results
+      - name: Upload Test Reports
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: test-results
+          name: backend-test-results
           path: backend/target/surefire-reports/
-
-  # ================================
-  # Build & Deploy (main only)
-  # ================================
-  build-and-deploy:
-    runs-on: ubuntu-latest
-    needs: test
-    if: github.ref == 'refs/heads/main' && github.event_name == 'push'
-
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-
-      - name: Configure AWS credentials
-        uses: aws-actions/configure-aws-credentials@v4
-        with:
-          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          aws-region: ap-south-1
-
-      - name: Login to Amazon ECR
-        id: login-ecr
-        uses: aws-actions/amazon-ecr-login@v2
-
-      - name: Build, tag, and push Docker image
-        run: |
-          docker build -t $ECR_REGISTRY/$IMAGE_NAME:${{ github.sha }} \
-                        -t $ECR_REGISTRY/$IMAGE_NAME:latest \
-                        ./backend
-          docker push $ECR_REGISTRY/$IMAGE_NAME:${{ github.sha }}
-          docker push $ECR_REGISTRY/$IMAGE_NAME:latest
-
-      - name: Deploy to ECS
-        run: |
-          aws ecs update-service \
-            --cluster apiscan-cluster \
-            --service apiscan-backend \
-            --force-new-deployment
